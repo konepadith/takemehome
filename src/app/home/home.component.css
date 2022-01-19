@@ -42,3 +42,9 @@
   color:teal;
   background: white;
 }
+.hover_drop:hover{
+
+  transition: .5s;
+
+}
+
