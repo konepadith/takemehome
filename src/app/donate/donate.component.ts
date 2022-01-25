@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DonateComponent implements OnInit {
 
+  pageDonate=true
   constructor() { }
 
   ngOnInit(): void {

@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewseventComponent implements OnInit {
 
+  pageNewsevent=true
   constructor() { }
 
   ngOnInit(): void {
