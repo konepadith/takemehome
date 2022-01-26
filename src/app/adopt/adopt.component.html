@@ -1,1 +1,80 @@
 <app-header [adopt]="pageAdopt"></app-header>
+
+
+  <div class="bg-dark d-flex align-items-center justify-content-center border-banner">
+    <div class="container-fluid  banner-img">
+
+      </div>
+      <div class="h1 text-white fw-bold" style="opacity: 1; position: absolute;" >MEET OUR DOGS</div>
+  </div>
+
+<div class="container text-center mt-5">
+  <div class="row">
+    <div class="col-md-6 ">
+      <h1>Pup of the Week</h1>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem eum saepe atque
+        labore animi placeat veritatis, maiores sapiente excepturi ex nostrum dignissimos
+        dolor tenetur repellendus molestiae corrupti provident cumque? Autem cum tempora
+         nesciunt ullam reiciendis iure vitae ab dolor, ipsam sit provident consectetur
+         ipsum minus architecto eveniet quis, accusamus laudantium.</p>
+        <button class="btn btn-primary">Apply to Adopt</button>
+    </div>
+    <div class="col-md-5 ">
+      <img src="../../assets/img/pexels-rishu-bhosale-7276657.jpg" class="dog-week" alt="">
+    </div>
+  </div>
+</div>
+
+<div class="container text-center" style="margin-top: 10rem;">
+  <p class="h5 text-muted">
+    We offer socially-distanced, outdoor shelter visits via appointment for potential adopters. We would love to help you find your new 4-legged friend! After viewing our pups, fill out an adoption or foster application below and we will contact you.
+  </p>
+</div>
+
+
+    <div class="container text-center">
+      <div class="row " style="margin-top: 10rem;">
+        <div class="col-md-2 form-floating">
+          <select name="" id="" class="form-select" [(ngModel)]="dog_age" >
+            <option selected value="-1">Any</option>
+            <option value="1">Baby 0-1</option>
+            <option value="5">Young 2-5</option>
+            <option value="9">Adult 6-9</option>
+            <option value="10">Senior 10 up</option>
+          </select>
+          <label for="floatingSelect">&nbsp;Age</label>
+        </div>
+        <div class="col-md-2 form-floating">
+          <select name="" id="" class="form-select" [(ngModel)]="dog_gender" >
+            <option selected value="">any</option>
+            <option value="1">male</option>
+            <option value="0">female</option>
+          </select>
+          <label for="floatingSelect">&nbsp;Gender</label>
+        </div>
+        <div class="col-md-2 form-floating">
+            <input  type="text" class="form-control" id="name" placeholder="Mily" name="name" value="" [(ngModel)]="dog_name">
+            <label for="name">&nbsp; Name</label>
+        </div>
+        <div class="col-md-1">
+       <button class="btn btn-primary" (click)="searcher()">Search</button>
+        </div>
+      </div>
+    </div>
+
+
+
+  <div class="container text-center" style="margin-top: 10rem;">
+    <div class="row ">
+      <div class="col-md-4 g-3" *ngFor="let item of dog_data">
+        <img src="{{ item.dog_img }}" class="dog-pic" alt="">
+        <p class="h3 text-primary">{{ item.dog_name }}</p>
+        <p class="">{{ item.dog_species }}</p>
+        <button class="btn btn-success">more info</button>
+      </div>
+    </div>
+  </div>
+<br>
+<br><br>
+
+<app-footer></app-footer>

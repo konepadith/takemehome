@@ -28,7 +28,13 @@
         <li class="nav-item">
           <a class="nav-link" [ngClass]="{'active':contact}"  routerLink="/contact">Contact</a>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item">
+          <a type="button" class="nav-link active" data-bs-toggle="modal" data-bs-target="#exampleModal1" data-bs-whatever="@mdo">Log in</a>
+        </li>
+        <li class="nav-item">
+          <a type="button" class="nav-link active" data-bs-toggle="modal" data-bs-target="#exampleModal2" data-bs-whatever="@mdo">Sign up</a>
+        </li>
+        <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown
           </a>
@@ -38,8 +44,167 @@
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
-        </li>
+        </li> -->
       </ul>
     </div>
   </div>
 </nav>
+
+
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">Open modal for @fat</button>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Open modal for @getbootstrap</button> -->
+
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Log in</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Email:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Password:</label>
+            <input type="text" class="form-control" id="recipient-password">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Log in</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Sign up</h5>
+        <button type="button" class="btn-close" #closebutton data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="Registration" (ngSubmit)="submit_registration()">
+
+          <div class="row">
+            <div class="form-floating col mb-3">
+              <input [ngClass]="{ 'is-invalid':  f.user_name.invalid && f.user_name.touched }" type="text" class="form-control" id="user_name" placeholder="John" name="user_name" formControlName="user_name">
+              <label for="user_name">&nbsp; Name</label>
+              <small class="p-error text-danger" *ngIf="  f.user_name.hasError('required')&&f.user_name.invalid && f.user_name.touched">Name is require</small>
+            </div>
+
+            <div class="form-floating col mb-3">
+              <input [ngClass]="{'is-invalid':  f.user_surname.invalid && f.user_surname.touched }" type="text" class="form-control" id="user_surname" placeholder="Smith" formControlName="user_surname">
+              <label for="user_surname">&nbsp; Surname</label>
+              <small class="p-error text-danger" *ngIf=" f.user_surname.hasError('required') &&f.user_surname.invalid && f.user_surname.touched">Surname is require</small>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class=" form-floating col mb-3">
+              <input [ngClass]="{ 'is-invalid':  f.user_email.invalid && f.user_email.touched }" type="email" name="user_email" id="user_email" class="form-control" placeholder="name@example.com" formControlName="user_email">
+              <label for="user_email">&nbsp; Email</label>
+              <small class="p-error text-danger" *ngIf=" f.user_email.hasError('required') &&f.user_email.invalid && f.user_email.touched">Email is require</small>
+              <small class="p-error text-danger" *ngIf=" f.user_email.hasError('email') &&f.user_email.invalid && f.user_email.touched">Email is invalid form</small>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-floating col mb-3">
+              <input [ngClass]="{ 'is-invalid':  f.user_password.invalid && f.user_password.touched }" type="password" name="user_password" id="user_password" class="form-control" placeholder="***" formControlName="user_password">
+              <label for="user_password">&nbsp; Password</label>
+              <small class="p-error text-danger" *ngIf="  f.user_password.hasError('required') &&f.user_password.invalid && f.user_password.touched">Password is require</small>
+              <small class="p-error text-danger" *ngIf="  f.user_password.hasError('minlength') &&f.user_password.invalid && f.user_password.touched">Password must be 8</small>
+            </div>
+            <div class="form-floating col mb-3">
+              <input [ngClass]="{ 'is-invalid':  f.confirm_password.invalid && f.confirm_password.touched }" type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="***" formControlName="confirm_password">
+              <label for="confirm_password">&nbsp; Confirm password</label>
+              <small class="p-error text-danger" *ngIf="  f.confirm_password.hasError('required') &&f.confirm_password.invalid && f.confirm_password.touched">Consfirm password is require</small>
+              <small class="p-error text-danger" *ngIf=" f.confirm_password.hasError('MustMatch') &&f.confirm_password.invalid && f.confirm_password.touched">Confirm password didn't Match</small>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-floating col mb-3">
+              <select class="form-select" id="floatingSelect" [ngClass]="{ 'is-invalid':  f.user_gender.invalid && f.user_gender.touched }" [(ngModel)]="genderList" formControlName="user_gender">
+                <option disable seleted hidden value="">Select gender</option>
+                <option value="1">Male</option>
+                <option value="2">Female</option>
+                <option value="3">Others</option>
+              </select>
+              <label for="floatingSelect">&nbsp; Gender</label>
+              <small class="p-error text-danger" *ngIf="  f.user_gender.hasError('required') &&f.user_gender.invalid && f.user_gender.touched">Gender is require</small>
+            </div>
+            <div class="form-floating col mb-3">
+              <input [ngClass]="{ 'is-invalid':  f.user_dob.invalid && f.user_dob.touched }" type="date" name="user_dob" id="user_dob" class="form-control" formControlName="user_dob">
+              <label for="user_dob">&nbsp; Date of Birth</label>
+              <small class="p-error text-danger" *ngIf="  f.user_dob.hasError('required') &&f.user_dob.invalid && f.user_dob.touched">Date of Birth is require</small>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-floating col mb-3">
+              <select class="form-select" id="user_province" [ngClass]="{ 'is-invalid':  f.user_province.invalid && f.user_province.touched }" ngModel formControlName="user_province" (change)="onSelectprovince($event)">
+                <option disable seleted hidden value="">Select Province</option>
+                <option *ngFor="let item of provinceList" value="{{ item.id_province }}">{{ item.name_lao }}</option>
+              </select>
+              <label for="user_province">&nbsp; Province</label>
+              <small class="p-error text-danger" *ngIf="  f.user_province.hasError('required') &&f.user_province.invalid && f.user_province.touched">Province is require</small>
+            </div>
+            <div class="form-floating col mb-3">
+              <select class="form-select" id="user_district" [ngClass]="{ 'is-invalid':  f.user_district.invalid && f.user_district.touched }" [(ngModel)]="user_district" formControlName="user_district"  (change)="onSelectdistrict($event)">
+                <option disable seleted hidden value="">Select District</option>
+                <option *ngFor="let item of district_data" value="{{ item.id_district }}">{{ item.name_lao }}</option>
+              </select>
+              <label for="user_district">&nbsp; District</label>
+              <small class="p-error text-danger" *ngIf="  f.user_district.hasError('required') &&f.user_district.invalid && f.user_district.touched">District is require</small>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-floating col mb-3">
+              <select class="form-select" id="user_village" [ngClass]="{ 'is-invalid':  f.user_village.invalid && f.user_village.touched }" [(ngModel)]="user_village" formControlName="user_village" >
+                <option disable seleted hidden value="">Select Village</option>
+                <option *ngFor="let item of village_data" value="{{ item.id_village }}">{{ item.name_lao }}</option>
+
+              </select>
+              <label for="user_village">&nbsp; Village</label>
+              <small class="p-error text-danger" *ngIf="  f.user_village.hasError('required') &&f.user_village.invalid && f.user_village.touched">Village is require</small>
+            </div>
+            <div class=" col mb-3">
+              <label for="floatingSelect">&nbsp; Image</label>
+              <input [ngClass]="{'is-invalid':  f.image.invalid && f.image.touched }" type="file" class="form-control form-control-sm" id="Image" placeholder="Smith" formControlName="image" (change)="onFIleSelect($event , 'image')">
+              <small class="p-error text-danger" *ngIf=" f.image.hasError('required') &&f.image.invalid && f.image.touched">Image is require</small>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-floating col mb-3">
+              <input [ngClass]="{ 'is-invalid':  f.user_workplace.invalid && f.user_workplace.touched }" type="text" class="form-control" id="user_workplace" placeholder="Your Company" name="user_workplace" formControlName="user_workplace">
+              <label for="user_workplace">&nbsp; Workplace</label>
+              <small class="p-error text-danger" *ngIf="  f.user_workplace.hasError('required')&&f.user_workplace.invalid && f.user_workplace.touched">WorkPlace is require</small>
+            </div>
+
+            <div class="form-floating col mb-3">
+              <input [ngClass]="{'is-invalid':  f.user_phoneNumber.invalid && f.user_phoneNumber.touched }" type="text" class="form-control" id="user_phoneNumber" placeholder="Phone Number 20540XXXXXX" formControlName="user_phoneNumber">
+              <label for="user_phoneNumber">&nbsp; Phone Number</label>
+              <small class="p-error text-danger" *ngIf=" f.user_phoneNumber.hasError('required') &&f.user_phoneNumber.invalid && f.user_phoneNumber.touched">Phone Number is require</small>
+            </div>
+          </div>
+          <div class="form-label">
+            <small class="p-error text-danger" *ngIf="email_exist">this email is already exist</small>
+            <button type="submit" class="btn btn-primary form-control" [disabled]="Registration.invalid">Sign up</button>
+          </div>
+
+        </form>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Log in</button>
+      </div> -->
+    </div>
+  </div>
+</div>

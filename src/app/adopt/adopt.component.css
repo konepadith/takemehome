@@ -1,0 +1,22 @@
+.banner-img {
+  height: 60vh;
+  background-repeat: no-repeat;
+  background-image: url('../../assets/img/pexels-kat-smith-551628.jpg');
+  background-position: right 50% bottom 50%;
+
+  background-size: cover;
+  opacity: 0.5;
+}
+.border-banner{
+  border-bottom: 8px solid #FF6363;
+}
+.container{
+  width: 1000px;
+}
+.dog-week{
+  width: 400px;
+}
+.dog-pic{
+  width: 250px;
+  border: 10px solid lightslategray;
+}
