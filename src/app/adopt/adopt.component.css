@@ -18,5 +18,7 @@
 }
 .dog-pic{
   width: 250px;
+  height: 250px;
+  object-fit: scale-down;
   border: 10px solid lightslategray;
 }
