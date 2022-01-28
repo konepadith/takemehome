@@ -1,0 +1,26 @@
+<app-header [adopt]="pageAdopt"></app-header>
+
+
+<div class="container">
+  <div class="row align-items-start " *ngFor="let item of dog_list">
+    <div class="col-md">
+      <img src="{{ item.dog_img }}" alt="" class="dog-pic">
+    </div>
+    <div class="col-md">
+      <p class="fs-1">{{ item.dog_name }}</p>
+      <p>{{ item.dog_bg }}</p>
+      <p>Contact us at takemehome@gmail.com for more information on this dog</p>
+    </div>
+    <div class="text-center mt-5">
+      <p class="fs-1">Require Adopt Form</p>
+    </div>
+    <form action="" method="post">
+      <div class="row">
+
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<app-footer></app-footer>

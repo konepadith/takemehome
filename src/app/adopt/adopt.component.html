@@ -1,138 +1,148 @@
 <app-header [adopt]="pageAdopt"></app-header>
 
-
-  <div class="bg-dark d-flex align-items-center justify-content-center border-banner">
-    <div class="container-fluid  banner-img">
-
-      </div>
-      <div class="h1 text-white fw-bold" style="opacity: 1; position: absolute;" >MEET OUR DOGS</div>
+<div
+  class="bg-dark d-flex align-items-center justify-content-center border-banner"
+>
+  <div class="container-fluid banner-img"></div>
+  <div class="h1 text-white fw-bold" style="opacity: 1; position: absolute">
+    MEET OUR DOGS
   </div>
+</div>
 
 <div class="container text-center mt-5">
   <div class="row">
-    <div class="col-md-6 ">
+    <div class="col-md-6">
       <h1>Pup of the Week</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem eum saepe atque
-        labore animi placeat veritatis, maiores sapiente excepturi ex nostrum dignissimos
-        dolor tenetur repellendus molestiae corrupti provident cumque? Autem cum tempora
-         nesciunt ullam reiciendis iure vitae ab dolor, ipsam sit provident consectetur
-         ipsum minus architecto eveniet quis, accusamus laudantium.</p>
-        <button class="btn btn-primary">Apply to Adopt</button>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem eum saepe
+        atque labore animi placeat veritatis, maiores sapiente excepturi ex
+        nostrum dignissimos dolor tenetur repellendus molestiae corrupti
+        provident cumque? Autem cum tempora nesciunt ullam reiciendis iure vitae
+        ab dolor, ipsam sit provident consectetur ipsum minus architecto eveniet
+        quis, accusamus laudantium.
+      </p>
+      <button class="btn btn-primary">Apply to Adopt</button>
     </div>
-    <div class="col-md-5 ">
-      <img src="../../assets/img/pexels-rishu-bhosale-7276657.jpg" class="dog-week" alt="">
+    <div class="col-md-5">
+      <img
+        src="../../assets/img/pexels-rishu-bhosale-7276657.jpg"
+        class="dog-week"
+        alt=""
+      />
     </div>
   </div>
 </div>
 
-<div class="container text-center" style="margin-top: 10rem;">
+<div class="container text-center" style="margin-top: 10rem">
   <p class="h5 text-muted">
-    We offer socially-distanced, outdoor shelter visits via appointment for potential adopters. We would love to help you find your new 4-legged friend! After viewing our pups, fill out an adoption or foster application below and we will contact you.
+    We offer socially-distanced, outdoor shelter visits via appointment for
+    potential adopters. We would love to help you find your new 4-legged friend!
+    After viewing our pups, fill out an adoption or foster application below and
+    we will contact you.
   </p>
 </div>
 
-
-    <div class="container text-center">
-      <div class="row " style="margin-top: 10rem;">
-        <div class="col-md-2 form-floating">
-          <select name="" id="" class="form-select" [(ngModel)]="dog_age" >
-            <option selected value="-1">Any</option>
-            <option value="1">Baby 0-1</option>
-            <option value="5">Young 2-5</option>
-            <option value="9">Adult 6-9</option>
-            <option value="10">Senior 10 up</option>
-          </select>
-          <label for="floatingSelect">&nbsp;Age</label>
-        </div>
-        <div class="col-md-2 form-floating">
-          <select name="" id="" class="form-select" [(ngModel)]="dog_gender" >
-            <option selected value="">any</option>
-            <option value="1">male</option>
-            <option value="0">female</option>
-          </select>
-          <label for="floatingSelect">&nbsp;Gender</label>
-        </div>
-        <div class="col-md-2 form-floating">
-            <input  type="text" class="form-control" id="name" placeholder="Mily" name="name" value="" [(ngModel)]="dog_name">
-            <label for="name">&nbsp; Name</label>
-        </div>
-        <div class="col-md-1">
-       <button class="btn btn-primary" (click)="searcher()">Search</button>
-        </div>
-      </div>
+<div class="container text-center">
+  <div class="row" style="margin-top: 10rem">
+    <div class="col-md-2 form-floating">
+      <select name="" id="" class="form-select" [(ngModel)]="dog_age">
+        <option selected value="-1">Any</option>
+        <option value="1">Baby 0-1</option>
+        <option value="5">Young 2-5</option>
+        <option value="9">Adult 6-9</option>
+        <option value="10">Senior 10 up</option>
+      </select>
+      <label for="floatingSelect">&nbsp;Age</label>
     </div>
+    <div class="col-md-2 form-floating">
+      <select name="" id="" class="form-select" [(ngModel)]="dog_gender">
+        <option selected value="">any</option>
+        <option value="1">male</option>
+        <option value="0">female</option>
+      </select>
+      <label for="floatingSelect">&nbsp;Gender</label>
+    </div>
+    <div class="col-md-2 form-floating">
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        placeholder="Mily"
+        name="name"
+        value=""
+        [(ngModel)]="dog_name"
+      />
+      <label for="name">&nbsp; Name</label>
+    </div>
+    <div class="col-md-1">
+      <button class="btn btn-primary" (click)="searcher()">Search</button>
+    </div>
+  </div>
+</div>
 
+<div class="container text-center" style="margin-top: 10rem">
+  <div class="row">
+    <div class="col-md-4 g-3" *ngFor="let item of dog_data">
+      <img src="{{ item.dog_img }}" class="dog-pic" alt="" />
+      <p class="h3 text-primary">{{ item.dog_name }}</p>
+      <p class="">{{ item.dog_species }}</p>
+      <button
+        class="btn btn-success"
+        type="button"
+        data-bs-toggle="modal"
+        attr.data-bs-target="#dog1{{ item.dog_id }}"
+      >
+        more info
+      </button>
 
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="dog1{{ item.dog_id }}"
 
-  <div class="container text-center" style="margin-top: 10rem;">
-    <div class="row ">
-      <div class="col-md-4 g-3" *ngFor="let item of dog_data">
-        <img src="{{ item.dog_img }}" class="dog-pic" alt="">
-        <p class="h3 text-primary">{{ item.dog_name }}</p>
-        <p class="">{{ item.dog_species }}</p>
-        <button class="btn btn-success" type="button" data-bs-toggle="modal" attr.data-bs-target="#dog1{{ item.dog_id }}">more info</button>
-
-        <!-- Modal -->
-        <div class="modal fade" id="dog1{{ item.dog_id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" >Dog Information</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      >
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Dog Information</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col">
+                  <img src="{{ item.dog_img }}" alt="" class="dog-pic" />
                 </div>
-                <div class="modal-body">
-                  <div class="row">
-                    <div class="col">
-                      <img src="{{ item.dog_img }}" alt="" class="dog-pic ">
-                    </div>
-                    <div class="col">
-                      <p class="text-start">{{ item.dog_bg }}</p>
-                      <p>Contact us at straydogshelter@gmail.com for more information on this dog. </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button class="btn btn-primary" attr.data-bs-target="#dog2{{ item.dog_id }}" data-bs-toggle="modal" data-bs-dismiss="modal">Adopt</button>
+                <div class="col">
+                  <p class="text-start">{{ item.dog_bg }}</p>
+                  <p class="text-start">
+                    Contact us at straydogshelter@gmail.com for more information
+                    on this dog.
+                  </p>
                 </div>
               </div>
             </div>
-        </div>
-        <div class="modal fade" id="dog2{{ item.dog_id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" >Dog 2 Information</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <form action="">
-                <div class="modal-body">
-                  <div class="row">
-                    <div class="form-floating col mb-3 ">
-                      <input type="text" class="form-control" placeholder="name">
-                      <label for="user_name">&nbsp; Name</label>
-
-                    </div>
-                    <div class="form-floating col mb-3 ">
-                      <input type="text" class="form-control" placeholder="surname">
-                      <label for="user_name">&nbsp; surname</label>
-                    </div>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button class="btn btn-primary" attr.data-bs-target="#dog1{{ item.dog_id }}" data-bs-toggle="modal" data-bs-dismiss="modal">Back</button>
-                  <button class="btn btn-primary" type="submit">submit</button>
-                </div>
-              </form>
-
+            <div class="modal-footer">
+              <button
+                class="btn btn-primary"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+                (click)="adoptdetail(item.dog_id )"
+              >
+                Adopt
+              </button>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
-<br>
-<br><br>
-
+</div>
+<br />
+<br /><br />
 
 <app-footer></app-footer>

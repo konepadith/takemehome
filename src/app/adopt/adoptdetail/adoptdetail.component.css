@@ -1,0 +1,9 @@
+.dog-pic{
+  width: 350px;
+  height: 350px;
+  object-fit: scale-down;
+}
+.container{
+  width: 900px;
+  margin-top: 5rem;
+}

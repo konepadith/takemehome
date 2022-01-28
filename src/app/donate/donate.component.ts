@@ -68,7 +68,9 @@ export class DonateComponent implements OnInit {
 
   handleclick =  (e:any,amount:number) => {
     e.preventDefault();
+
     this.cart.amount=amount*100
+
     this.creditCardConfigure()
     this.omisecardHandler()
 }

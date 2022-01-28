@@ -38,4 +38,9 @@ export class RestService {
     const url='http://localhost:3000/province'
     return this.http.get<any>(url)
   }
+  data_dog_id(id:any){
+    const url='http://localhost:3000/data_dog_id?id='+id
+    return this.http.get<any>(url)
+  }
+
 }

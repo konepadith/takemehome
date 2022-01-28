@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+
 import { RestService } from '../shared/rest.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-adopt',
   templateUrl: './adopt.component.html',
@@ -8,28 +9,29 @@ import { RestService } from '../shared/rest.service';
 })
 export class AdoptComponent implements OnInit {
 
+
   pageAdopt=true
-
-   agecompare :any
-
+  agecompare :any
   dogList:any=[]
   dog_data:any=[]
-
   dog_age=0
   dog_gender=''
   dog_name=''
-  constructor(private service : RestService, private fb:FormBuilder) { }
+
+  constructor(private service : RestService, private router:Router) { }
 
   ngOnInit(): void {
 
 
 
+
     this.service.dogs_data().subscribe(response=>{
-      console.log(response.data)
+      // console.log(response.data)
       this.dogList = response.data
       this.dog_data=response.data
     })
   }
+
 
 
   searcher(){
@@ -77,9 +79,10 @@ export class AdoptComponent implements OnInit {
       })
     this.dog_data=data
     }
+  }
 
-
-
+  adoptdetail(id:number){
+    this.router.navigate(['adoptdetail',id])
   }
 
 }
