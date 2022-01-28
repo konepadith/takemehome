@@ -70,11 +70,69 @@
         <img src="{{ item.dog_img }}" class="dog-pic" alt="">
         <p class="h3 text-primary">{{ item.dog_name }}</p>
         <p class="">{{ item.dog_species }}</p>
-        <button class="btn btn-success">more info</button>
+        <button class="btn btn-success" type="button" data-bs-toggle="modal" attr.data-bs-target="#dog1{{ item.dog_id }}">more info</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="dog1{{ item.dog_id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" >Dog Information</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div class="row">
+                    <div class="col">
+                      <img src="{{ item.dog_img }}" alt="" class="dog-pic ">
+                    </div>
+                    <div class="col">
+                      <p class="text-start">{{ item.dog_bg }}</p>
+                      <p>Contact us at straydogshelter@gmail.com for more information on this dog. </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-primary" attr.data-bs-target="#dog2{{ item.dog_id }}" data-bs-toggle="modal" data-bs-dismiss="modal">Adopt</button>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="modal fade" id="dog2{{ item.dog_id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" >Dog 2 Information</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form action="">
+                <div class="modal-body">
+                  <div class="row">
+                    <div class="form-floating col mb-3 ">
+                      <input type="text" class="form-control" placeholder="name">
+                      <label for="user_name">&nbsp; Name</label>
+
+                    </div>
+                    <div class="form-floating col mb-3 ">
+                      <input type="text" class="form-control" placeholder="surname">
+                      <label for="user_name">&nbsp; surname</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-primary" attr.data-bs-target="#dog1{{ item.dog_id }}" data-bs-toggle="modal" data-bs-dismiss="modal">Back</button>
+                  <button class="btn btn-primary" type="submit">submit</button>
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
 <br>
 <br><br>
+
 
 <app-footer></app-footer>

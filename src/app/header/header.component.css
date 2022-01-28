@@ -4,3 +4,6 @@
 .bg-nav{
   background: #FF6363;
 }
+nav-link:hover{
+  color: white;
+}
