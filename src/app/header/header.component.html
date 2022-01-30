@@ -1,6 +1,6 @@
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-nav navbar-dark">
+<nav class="navbar navbar-expand-lg navbar-light bg-nav navbar-dark mb-0">
   <div class="container">
     <a class="navbar-brand" href="#">
       <img src="../../assets/img/house.png" height="35" width="35" alt="" class="d-inline-block align-top">
@@ -28,23 +28,23 @@
         <li class="nav-item">
           <a class="nav-link" [ngClass]="{'active':contact}"  routerLink="/contact">Contact</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="user_status == 0 || user_status == null" class="nav-item">
           <a type="button" class="nav-link active" data-bs-toggle="modal" data-bs-target="#exampleModal1" data-bs-whatever="@mdo">Log in</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="user_status == 0 || user_status == null" class="nav-item">
           <a type="button" class="nav-link active" data-bs-toggle="modal" data-bs-target="#exampleModal2" data-bs-whatever="@mdo">Sign up</a>
         </li>
-        <!-- <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+        <li *ngIf="user_status== 1" class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{ this.user_info.data[0].user_name }}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Visit Your profile</a></li>
             <li><a class="dropdown-item" href="#">Another action</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="#" (click)="logout()">Log out</a></li>
           </ul>
-        </li> -->
+        </li>
       </ul>
     </div>
   </div>
@@ -59,24 +59,28 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Log in</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" #login_close aria-label="Close"></button>
       </div>
+      <form [formGroup]="Login" (ngSubmit)="submit_login()" >
       <div class="modal-body">
-        <form>
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Email:</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <label for="user_email" class="col-form-label">Email:</label>
+            <input [ngClass]="{ 'is-invalid':  l.user_email.invalid && l.user_email.touched }" type="text" class="form-control" id="user_email" formControlName="user_email">
+            <small class="p-error text-danger" *ngIf=" l.user_email.hasError('required') &&l.user_email.invalid && l.user_email.touched">Email is require</small>
+            <small class="p-error text-danger" *ngIf=" l.user_email.hasError('email') &&l.user_email.invalid && l.user_email.touched">Email is invalid form</small>
           </div>
           <div class="mb-3">
-            <label for="message-text" class="col-form-label">Password:</label>
-            <input type="text" class="form-control" id="recipient-password">
+            <label for="user_password" class="col-form-label">Password:</label>
+            <input type="password" class="form-control" id="user_password" formControlName="user_password">
+            <small class="p-error text-danger" *ngIf="  l.user_password.hasError('required') &&l.user_password.invalid && l.user_password.touched">Password is require</small>
+            <small class="p-error text-danger" *ngIf="  l.user_password.hasError('minlength') &&l.user_password.invalid && l.user_password.touched">Password must be 8</small>
           </div>
-        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Log in</button>
+        <button type="submit" class="btn btn-primary" [disabled]="Login.invalid">Log in</button>
       </div>
+    </form>
     </div>
   </div>
 </div>

@@ -23,6 +23,10 @@ export class RestService {
     // const data={data_image,data_text}
     return this.http.post<any>(url,data)
   }
+  login(data:any){
+    const url ='http://localhost:3000/login'
+    return this.http.post<any>(url,data)
+  }
 
   village(){
     const url='http://localhost:3000/village'
@@ -42,5 +46,6 @@ export class RestService {
     const url='http://localhost:3000/data_dog_id?id='+id
     return this.http.get<any>(url)
   }
+
 
 }

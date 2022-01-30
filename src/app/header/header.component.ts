@@ -15,7 +15,9 @@ export class HeaderComponent implements OnInit {
   @Input() news_event:any
   @Input() contact:any
   @ViewChild('closebutton') closebutton: any;
+  @ViewChild('login_close') login_close: any;
   Registration:any = FormGroup;
+  Login:any= FormGroup;
   submitted = false;
   email_exist = false
   genderList:[]=[]
@@ -33,11 +35,13 @@ export class HeaderComponent implements OnInit {
 
   user_district='' //give default value for Show Selected option default
   user_village='' //give default value for Show Selected option default
+  user_status= JSON.parse(localStorage.getItem("user") || "[]").status
+  user_info=JSON.parse(localStorage.getItem("user") || "[]")
 
   constructor(private service: RestService , private fb:FormBuilder,private cd: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-
+    console.log("hell",this.user_status)
     this.Registration = this.fb.group({
       user_name:        [null,Validators.required],
       user_surname:     [null,Validators.required],
@@ -54,6 +58,11 @@ export class HeaderComponent implements OnInit {
       user_phoneNumber: [null,Validators.required],
     },{
       validators:this.MustMatch('user_password','confirm_password') //Corfirm password function
+    })
+
+    this.Login = this.fb.group({
+      user_email: [null,Validators.compose([Validators.required,Validators.email])],
+      user_password:[null,Validators.compose([Validators.required,Validators.minLength(8)])]
     })
 
     this.service.village().subscribe(response=>{
@@ -73,6 +82,7 @@ export class HeaderComponent implements OnInit {
   }
 
   get f() { return this.Registration.controls; }
+  get l() { return this.Login.controls;}
 
   //CONFIRM PASSWORD
   MustMatch(controlName:string,matchingControlName:string){
@@ -132,6 +142,26 @@ onFIleSelect(event:any, field:any) {
         })
     }
 
+  }
+  submit_login(){
+    this.service.login(this.Login.value).subscribe(response=>{
+      if (response.status == 1) {
+          localStorage.setItem("user",JSON.stringify(response))
+          this.user_status = JSON.parse(localStorage.getItem("user") || "[]").status;
+          this.user_info =JSON.parse(localStorage.getItem("user") || "[]")
+          this.login_close.nativeElement.click()
+
+      } else {
+        localStorage.clear()
+        this.user_status=0
+        console.log("fail",this.user_status)
+      }
+    })
+  }
+
+  logout(){
+    localStorage.clear()
+    this.user_status=null
   }
 
   onSelectprovince(province:any){
