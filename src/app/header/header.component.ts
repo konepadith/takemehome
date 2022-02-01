@@ -1,4 +1,4 @@
-import { Component, OnInit, Input,ChangeDetectorRef, ViewChild } from '@angular/core';
+import { Component, OnInit, Input,ChangeDetectorRef, ViewChild, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RestService } from '../shared/rest.service';
 @Component({
@@ -41,7 +41,6 @@ export class HeaderComponent implements OnInit {
   constructor(private service: RestService , private fb:FormBuilder,private cd: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-    console.log("hell",this.user_status)
     this.Registration = this.fb.group({
       user_name:        [null,Validators.required],
       user_surname:     [null,Validators.required],
@@ -155,12 +154,14 @@ onFIleSelect(event:any, field:any) {
         localStorage.clear()
         this.user_status=0
         console.log("fail",this.user_status)
+        alert("Fail")
       }
     })
   }
 
   logout(){
     localStorage.clear()
+    this.user_info=null
     this.user_status=null
   }
 

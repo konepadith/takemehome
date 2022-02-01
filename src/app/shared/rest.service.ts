@@ -46,6 +46,9 @@ export class RestService {
     const url='http://localhost:3000/data_dog_id?id='+id
     return this.http.get<any>(url)
   }
-
+  required_adopt(data:any){
+    const url='http://localhost:3000/required'
+    return this.http.post<any>(url,data)
+  }
 
 }

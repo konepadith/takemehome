@@ -13,210 +13,228 @@
     </div>
     <div class="text-center mt-5">
       <p class="fs-1">Require Adopt Form</p>
+      <button class="btn btn-primary" type="button" (click)="test()">test</button>
     </div>
-    <form action="" method="post">
+    <form [formGroup]="formrequired" action="" method="post" (ngSubmit)="submit_adopt()">
       <hr>
       <div class="row mb-5">
         <div class=" col-md-6 mb-3">
           <p>1. Do you own or rent your current home?</p>
           <div class="row ps-3">
             <div class="col-md-2 form-check">
-              <input class="form-check-input" type="radio" name="q_1" id="q_1_yes">
+              <input class="form-check-input" type="radio" name="q_1" id="q_1_yes" value="1" formControlName="q_1" (change)="q_1_diable_q_2()">
               <label class="form-check-label" for="q_1_yes">
-                Yes
+                Rent
               </label>
             </div>
             <div class="col-md-2 form-check">
-              <input class="form-check-input" type="radio" name="q_1" id="q_1_no" checked>
+              <input class="form-check-input" type="radio" name="q_1" id="q_1_no" value="2" formControlName="q_1" (change)="q_1_diable_q_2()">
               <label class="form-check-label" for="q_1_no">
-                No
+                Own
               </label>
             </div>
           </div>
+          <small class="p-error text-danger" *ngIf=" f.q_1.hasError('required') &&f.q_1.invalid && f.q_1.touched">question 1 is require</small>
         </div>
         <div class=" col-md-6 mb-3">
           <p>2. If you RENT your home, are pets allowed?</p>
           <div class="row ps-3">
             <div class="col-md-2 form-check">
-              <input class="form-check-input" type="radio" name="q_2" id="q_2_yes">
+              <input class="form-check-input" type="radio" name="q_2" value="1" formControlName="q_2" id="q_2_yes">
               <label class="form-check-label" for="q_2_yes">
                 Yes
               </label>
             </div>
             <div class="col-md-2 form-check">
-              <input class="form-check-input" type="radio" name="q_2" id="q_2_no">
+              <input class="form-check-input" type="radio" name="q_2" value="2" formControlName="q_2" id="q_2_no">
               <label class="form-check-label" for="q_2_no">
                 No
               </label>
             </div>
             <div class="col-md-2 form-check">
-              <input class="form-check-input" type="radio" name="q_2" id="q_2_none" checked>
+              <input class="form-check-input" type="radio" name="q_2" value="3" id="q_2_none" formControlName="q_2" checked>
               <label class="form-check-label" for="q_2_none">
                 None
               </label>
             </div>
           </div>
+          <small class="p-error text-danger" *ngIf=" f.q_2.hasError('required') &&f.q_2.invalid && f.q_2.touched">question 2 is require</small>
         </div>
         <div class=" col-md-6 mb-3">
           <p>3. Is there a weight limit?</p>
           <div class="row ps-3">
             <div class="col-md-2 form-check">
-              <input class="form-check-input" type="radio" name="q_3" id="q_3_yes">
+              <input class="form-check-input" type="radio" name="q_3" value="1" formControlName="q_3" id="q_3_yes" (change)="q_3_diable_q_4()">
               <label class="form-check-label" for="q_3_yes">
                 Yes
               </label>
             </div>
             <div class="col-md-2 form-check">
-              <input class="form-check-input" type="radio" name="q_3" id="q_3_no">
+              <input class="form-check-input" type="radio" name="q_3" value="2" formControlName="q_3" id="q_3_no" (change)="q_3_diable_q_4()">
               <label class="form-check-label" for="q_3_no">
                 No
               </label>
             </div>
             <div class="col-md-2 form-check">
-              <input class="form-check-input" type="radio" name="q_3" id="q_3_none" checked>
+              <input class="form-check-input" type="radio" name="q_3" value="3" formControlName="q_3" id="q_3_none" checked>
               <label class="form-check-label" for="q_3_none">
                 None
               </label>
             </div>
           </div>
+          <small class="p-error text-danger" *ngIf=" f.q_3.hasError('required') &&f.q_3.invalid && f.q_3.touched">question 3 is require</small>
         </div>
         <div class="col-md-6 mb-3">
           <label for="examplFormControlInput1" class="form-label">4. What is the weight limit?</label>
-          <input type="text" class="form-control col-md-6" id="exampleFormControlInput1" placeholder="14 Kg / 30 Pound">
+          <input type="text" class="form-control col-md-6" id="exampleFormControlInput1" name="q_4" formControlName="q_4" placeholder="14 Kg / 30 Pound">
+          <small class="p-error text-danger" *ngIf=" f.q_4.hasError('required') &&f.q_4.invalid && f.q_4.touched">question 4 is require</small>
         </div>
         <div class=" col-md-6 mb-3">
           <p>5. Is a pet deposit required?</p>
           <div class="row ps-3">
             <div class="col-md-2 form-check">
-              <input class="form-check-input" type="radio" name="q_5" id="q_5_yes">
+              <input class="form-check-input" type="radio" name="q_5" value="1" formControlName="q_5"  id="q_5_yes" (change)="q_5_disable_q_6()">
               <label class="form-check-label" for="q_5_yes">
                 Yes
               </label>
             </div>
             <div class="col-md-2 form-check">
-              <input class="form-check-input" type="radio" name="q_5" id="q_5_no">
+              <input class="form-check-input" type="radio" name="q_5" value="2" formControlName="q_5" id="q_5_no" (change)="q_5_disable_q_6()">
               <label class="form-check-label" for="q_5_no">
                 No
               </label>
             </div>
             <div class="col-md-2 form-check">
-              <input class="form-check-input" type="radio" name="q_5" id="q_5_none" checked>
+              <input class="form-check-input" type="radio" name="q_5" value="3" formControlName="q_5" id="q_5_none" (change)="q_5_disable_q_6()">
               <label class="form-check-label" for="q_5_none">
                 None
               </label>
             </div>
           </div>
+          <small class="p-error text-danger" *ngIf=" f.q_5.hasError('required') &&f.q_5.invalid && f.q_5.touched">question 5 is require</small>
         </div>
         <div class="col-md-6 mb-3">
           <label for="examplFormControlInput1" class="form-label">6. What is the deposit amount?</label>
-          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="10000 kips ">
+          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="10000 kips" formControlName="q_6" >
+          <small class="p-error text-danger" *ngIf=" f.q_6.hasError('required') &&f.q_6.invalid && f.q_6.touched">question 6 is require</small>
         </div>
         <hr>
         <div class=" col-md-6 mb-3">
           <p>7. Do you travel frequently?</p>
           <div class="row ps-3">
             <div class="col-md-3 form-check">
-              <input class="form-check-input" type="radio" name="q_7" id="q_7_yes">
+              <input class="form-check-input" type="radio" name="q_7" formControlName="q_7"  value="1" id="q_7_yes">
               <label class="form-check-label" for="q_7_yes">
                 Always
               </label>
             </div>
             <div class="col-md-3 form-check">
-              <input class="form-check-input" type="radio" name="q_7" id="q_7_no">
+              <input class="form-check-input" type="radio" name="q_7" formControlName="q_7" value="2" id="q_7_no">
               <label class="form-check-label" for="q_7_no">
                 Usually
               </label>
             </div>
             <div class="col-md-3 form-check">
-              <input class="form-check-input" type="radio" name="q_7" id="q_7_none" checked>
+              <input class="form-check-input" type="radio" name="q_7" formControlName="q_7" value="3" id="q_7_none" checked>
               <label class="form-check-label" for="q_7_none">
                 Sometimes
               </label>
             </div>
           </div>
+          <small class="p-error text-danger" *ngIf=" f.q_7.hasError('required') &&f.q_7.invalid && f.q_7.touched">question 7 is require</small>
         </div>
         <div class="col-md-6 mb-3">
           <label for="examplFormControlInput1" class="form-label">8. when you are always, who will care for the
             dog?</label>
           <!-- <input type="text" class="form-control" id="q_8" placeholder="Parent / Child / Aunt / Neighbour"> -->
-          <textarea class="form-control col-md-6" id="q_8" placeholder="Parent / Child / Aunt / Neighbour" rows="3"></textarea>
+          <textarea [ngClass]="{'is-invalid':  f.q_8.invalid && f.q_8.touched }" class="form-control col-md-6" id="q_8" placeholder="Parent / Child / Aunt / Neighbour" formControlName="q_8" rows="3"></textarea>
+          <small class="p-error text-danger" *ngIf=" f.q_8.hasError('required') &&f.q_8.invalid && f.q_8.touched">question 8 is require</small>
         </div>
         <div class="col-md-6 mb-3">
           <label for="examplFormControlInput1" class="form-label">9. how many hours per day will the dog be alone?</label>
-          <input type="text" class="form-control  col-md-6" id="q_9" placeholder="8h / 6h">
-          <!-- <textarea class="form-control" id="q_8" placeholder="Parent / Child / Aunt / Neighbour" rows="3"></textarea> -->
+          <input [ngClass]="{'is-invalid':  f.q_9.invalid && f.q_9.touched }" type="text" class="form-control  col-md-6" formControlName="q_9" id="q_9" placeholder="8h / 6h">
+          <!-- <textarea class="form-control" id="q_9" placeholder="Parent / Child / Aunt / Neighbour" rows="3"></textarea> -->
+          <small class="p-error text-danger" *ngIf=" f.q_9.hasError('required') &&f.q_9.invalid && f.q_9.touched">question 9 is require</small>
         </div>
         <div class="col-md-6 mb-3 ">
           <label for="examplFormControlInput1" class="form-label">10. Where will the dog be kept during the day?</label>
-          <input type="text" class="form-control  col-md-6" id="q_10" placeholder="in apartment / outside house">
-          <!-- <textarea class="form-control" id="q_8" placeholder="Parent / Child / Aunt / Neighbour" rows="3"></textarea> -->
+          <input [ngClass]="{'is-invalid':  f.q_10.invalid && f.q_10.touched }" type="text" class="form-control col-md-6" formControlName="q_10" id="q_10" placeholder="in apartment / outside house">
+          <!-- <textarea class="form-control" id="q_10" placeholder="Parent / Child / Aunt / Neighbour" rows="3"></textarea> -->
+          <small class="p-error text-danger" *ngIf=" f.q_10.hasError('required') &&f.q_10.invalid && f.q_10.touched">question 10 is require</small>
         </div>
         <div class="col-md-6 mb-3 ">
           <label for="examplFormControlInput1" class="form-label">11. how long do you plan to keep this dog?</label>
-          <input type="text" class="form-control  col-md-6" id="q_11" placeholder="in apartment / outside house">
-          <!-- <textarea class="form-control" id="q_8" placeholder="Parent / Child / Aunt / Neighbour" rows="3"></textarea> -->
+          <input [ngClass]="{'is-invalid':  f.q_11.invalid && f.q_11.touched }" type="text" class="form-control  col-md-6" formControlName="q_11" id="q_11" placeholder="in apartment / outside house">
+          <!-- <textarea class="form-control" id="q_11" placeholder="Parent / Child / Aunt / Neighbour" rows="3"></textarea> -->
+          <small class="p-error text-danger" *ngIf=" f.q_11.hasError('required') &&f.q_11.invalid && f.q_11.touched">question 11 is require</small>
         </div>
         <div class="col-md-6 mb-3 ">
           <label for="examplFormControlInput1" class="form-label">12. if you lost your job or had to move, or if the dog grows largers than expected,
             what would you do with the dog?</label>
-          <!-- <input type="text" class="form-control" id="q_11" placeholder="in apartment / outside house"> -->
-          <textarea class="form-control" id="q_13" placeholder="Parent / Child / Aunt / Neighbour" rows="3"></textarea>
+          <!-- <input type="text" class="form-control" id="q_12" placeholder="in apartment / outside house"> -->
+          <textarea class="form-control" [ngClass]="{'is-invalid':  f.q_12.invalid && f.q_12.touched }" id="q_12" placeholder="Parent / Child / Aunt / Neighbour" formControlName="q_12" rows="3"></textarea>
+          <small class="p-error text-danger" *ngIf=" f.q_12.hasError('required') &&f.q_12.invalid && f.q_12.touched">question 12 is require</small>
         </div>
         <hr>
         <div class="col-md-6 mb-3 ">
           <label for="examplFormControlInput1" class="form-label">13. where will this dog be kept during bad weather?</label>
-          <input type="text" class="form-control" id="q_13" placeholder="Inside house / under tree">
+          <input [ngClass]="{'is-invalid':  f.q_13.invalid && f.q_13.touched }" type="text" class="form-control" id="q_13" formControlName="q_13" placeholder="Inside house / under tree">
           <!-- <textarea class="form-control" id="q_13  col-md-6" placeholder="Inside house / under tree" rows="3"></textarea> -->
+          <small class="p-error text-danger" *ngIf=" f.q_13.hasError('required') &&f.q_13.invalid && f.q_13.touched">question 13 is require</small>
         </div>
         <div class="col-md-6 mb-3 ">
           <label for="examplFormControlInput1" class="form-label">14. how do you plan to house train the dog?</label>
-          <input type="text" class="form-control" id="q_13" placeholder="Inside house / under tree">
-          <!-- <textarea class="form-control" id="q_13  col-md-6" placeholder="Inside house / under tree" rows="3"></textarea> -->
+          <input [ngClass]="{'is-invalid':  f.q_14.invalid && f.q_14.touched }" type="text" class="form-control" id="q_14" formControlName="q_14" placeholder="Inside house / under tree">
+          <!-- <textarea class="form-control" id="q_14  col-md-6" placeholder="Inside house / under tree" rows="3"></textarea> -->
+          <small class="p-error text-danger" *ngIf=" f.q_14.hasError('required') &&f.q_14.invalid && f.q_14.touched">question 14 is require</small>
         </div>
         <div class="col-md-6 mb-3 ">
           <label for="examplFormControlInput1" class="form-label">15. if this dog develops behavioral problems such as chewing, digging, etc, what 	masures will you take?</label>
-          <!-- <input type="text" class="form-control" id="q_13" placeholder="Inside house / under tree"> -->
-          <textarea class="form-control" id="q_13  col-md-6" placeholder="Inside house / under tree" rows="3"></textarea>
+          <!-- <input type="text" class="form-control" id="q_15" placeholder="Inside house / under tree"> -->
+          <textarea [ngClass]="{'is-invalid':  f.q_15.invalid && f.q_15.touched }" class="form-control" id="q_15  col-md-6" formControlName="q_15" placeholder="Inside house / under tree" rows="3"></textarea>
+          <small class="p-error text-danger" *ngIf=" f.q_15.hasError('required') &&f.q_15.invalid && f.q_15.touched">question 15 is require</small>
         </div>
         <div class="col-md-6 mb-3 ">
           <label for="examplFormControlInput1" class="form-label">16. will you train this dog? if so, How?</label>
-          <!-- <input type="text" class="form-control" id="q_13" placeholder="Inside house / under tree"> -->
-          <textarea class="form-control" id="q_13  col-md-6" placeholder="Inside house / under tree" rows="4"></textarea>
+          <!-- <input type="text" class="form-control" id="q_16" placeholder="Inside house / under tree"> -->
+          <textarea [ngClass]="{'is-invalid':  f.q_16.invalid && f.q_16.touched }" class="form-control" id="q_13  col-md-6" formControlName="q_16" placeholder="Inside house / under tree" rows="4"></textarea>
+          <small class="p-error text-danger" *ngIf=" f.q_16.hasError('required') &&f.q_16.invalid && f.q_16.touched">question 16 is require</small>
         </div>
         <div class="col-md-6 mb-3 ">
           <label for="examplFormControlInput1" class="form-label">17. Why do you want to adopt a companion animal?</label>
-          <!-- <input type="text" class="form-control" id="q_13" placeholder="Inside house / under tree"> -->
-          <textarea class="form-control" id="q_13  col-md-6" placeholder="Inside house / under tree" rows="4"></textarea>
+          <!-- <input type="text" class="form-control" id="q_17" placeholder="Inside house / under tree"> -->
+          <textarea [ngClass]="{'is-invalid':  f.q_17.invalid && f.q_17.touched }" class="form-control" id="q_13  col-md-6" formControlName="q_17" placeholder="Inside house / under tree" rows="4"></textarea>
+          <small class="p-error text-danger" *ngIf=" f.q_17.hasError('required') &&f.q_17.invalid && f.q_17.touched">question 17 is require</small>
         </div>
         <div class=" col-md-6 mb-3">
           <p>18. Do you have a securely fenced yard?</p>
           <div class="row ps-3">
             <div class="col-md-3 form-check">
-              <input class="form-check-input" type="radio" name="q_7" id="q_7_yes">
-              <label class="form-check-label" for="q_7_yes">
+              <input class="form-check-input" type="radio" name="q_18" value="1" formControlName="q_18" id="q_18_yes">
+              <label class="form-check-label" for="q_18_yes">
                 Yes
               </label>
             </div>
             <div class="col-md-3 form-check">
-              <input class="form-check-input" type="radio" name="q_7" id="q_7_no">
-              <label class="form-check-label" for="q_7_no">
+              <input class="form-check-input" type="radio" name="q_18" value="2"  formControlName="q_18" id="q_18_no">
+              <label class="form-check-label" for="q_18_no">
                 No
               </label>
             </div>
-
           </div>
+          <small class="p-error text-danger" *ngIf=" f.q_18.hasError('required') &&f.q_18.invalid && f.q_18.touched">question 18 is require</small>
           <label for="examplFormControlInput1" class="form-label">19. how hight fence?</label>
-            <input type="text" class="form-control" id="q_13" placeholder="Inside house / under tree">
+            <input [ngClass]="{'is-invalid':  f.q_19.invalid && f.q_19.touched }" type="text" class="form-control" id="q_19" formControlName="q_19" placeholder="Inside house / under tree">
+            <small class="p-error text-danger" *ngIf=" f.q_19.hasError('required') &&f.q_19.invalid && f.q_19.touched">question 19 is require</small>
         </div>
         <hr>
         <div class="col-sm-6">
-          <button class="btn btn-primary col-sm-2" type="submit">Submit</button>
+          <button class="btn btn-primary col-sm-2" [disabled]="formrequired.invalid" type="submit">Submit</button>
         </div>
 
       </div>
     </form>
   </div>
 </div>
-
 
 <app-footer></app-footer>
