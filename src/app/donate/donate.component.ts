@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { RestService } from '../shared/rest.service';
-
+import Swal from "sweetalert2";
+import { NgxSpinnerService } from "ngx-spinner";
 @Component({
   selector: 'app-donate',
   templateUrl: './donate.component.html',
@@ -10,17 +12,22 @@ export class DonateComponent implements OnInit {
 
   pageDonate=true
   OmiseCard:any = null;
+  // email:any=JSON.parse(localStorage.getItem("user") || "[]").data[0].user_email
+  // name:any=JSON.parse(localStorage.getItem("user") || "[]").data[0].user_name
   cart={
-    email:'guest@test.com',
-    name:'Guest',
+    email:'',
+    name:'',
     amount:0,
     token:''
   }
-  constructor(private service:RestService) { }
+  customedonate:any
+  constructor(private service:RestService , private router : Router, private spinner : NgxSpinnerService) { }
 
-  ngOnInit(): void {
-    this.invokeOmise();
+  ngOnInit() {
+    this.invokeOmise()
   }
+
+
 
   invokeOmise(){
     const script=window.document.createElement("script");
@@ -53,26 +60,69 @@ export class DonateComponent implements OnInit {
       frameDescription:'Invoice #3847',
       amount: this.cart.amount,
       onCreateTokenSuccess: (nonce: any) => {
+
       this.cart.token=nonce
+      this.spinner.show();
       this.service.createCreditCardCharge(this.cart).subscribe(response=>{
-        console.log(response)
-        window.location.reload()
+        // console.log(response.status)
+        this.spinner.hide();
+        if (response.status ==0 && response.error==true) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Transaction error',
+            text: 'try again',
+            })
+        }else if(response.status ==1 && response.error==false){
+          Swal.fire({
+            icon: 'success',
+            title: 'Thank you',
+            text: 'You give a life',
+            })
+        }
       })
 
       },
       onFormClosed: () => {
         /* Handler on form closure. */
+        window.location.reload()
+
       },
     })
   }
 
   handleclick =  (e:any,amount:number) => {
-    e.preventDefault();
 
-    this.cart.amount=amount*100
+    if (!localStorage.getItem("user")) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Please Log in',
+        text: 'Log in Before donating',
+        })
+    } else {
+      if (amount < 20) {
+        Swal.fire({
+          icon: 'warning',
+          title: 'not enough Amount',
+          text: 'Amount must more than 20 Baht',
+          })
+      } else {
 
-    this.creditCardConfigure()
-    this.omisecardHandler()
+        e.preventDefault();
+      console.log(amount)
+      console.log(this.customedonate)
+      this.cart.amount=amount*100
+      this.cart.email=JSON.parse(localStorage.getItem("user") || "[]").data[0].user_email
+      this.cart.name=JSON.parse(localStorage.getItem("user") || "[]").data[0].user_name
+      this.creditCardConfigure()
+      this.omisecardHandler()
+      }
+    }
+
+
+
 }
 
+test(){
+  console.log(this.customedonate)
+}
 }

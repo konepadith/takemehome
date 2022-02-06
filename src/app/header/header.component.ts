@@ -1,5 +1,8 @@
+import { Location } from '@angular/common';
 import { Component, OnInit, Input,ChangeDetectorRef, ViewChild, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { RestService } from '../shared/rest.service';
 @Component({
   selector: 'app-header',
@@ -117,6 +120,8 @@ onFIleSelect(event:any, field:any) {
       this.cd.markForCheck();
     }
   }}
+
+
   submit_registration(){
 
     if (this.Registration.invalid) {
@@ -131,11 +136,25 @@ onFIleSelect(event:any, field:any) {
           console.log(response)
           if (response.status ==0 ) {
             this.email_exist=true
+            Swal.fire({
+              icon: 'error',
+              title: 'Email is already exist',
+              text: 'Try other email',
+              })
           }else if (response.error == true) {
-            alert("Something went Wrong")
+            Swal.fire({
+              icon: 'error',
+              title: 'Sonething went wrong',
+              text: 'Please contact supporter',
+              })
           }
           else {
             this.closebutton.nativeElement.click();
+            Swal.fire({
+              icon: 'success',
+              title: 'Sucessfully',
+              text: 'Welcome new Member',
+              })
           }
 
         })
@@ -182,5 +201,7 @@ onFIleSelect(event:any, field:any) {
     this.village_data=data
     this.user_village=''
   }
+
+
 
 }

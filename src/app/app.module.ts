@@ -14,7 +14,8 @@ import { FooterComponent } from './footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AdoptdetailComponent } from './adopt/adoptdetail/adoptdetail.component';
-
+import { SildeDirective } from './adopt/adoptdetail/silde.directive';
+import { NgxSpinnerModule } from "ngx-spinner";
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,14 +27,16 @@ import { AdoptdetailComponent } from './adopt/adoptdetail/adoptdetail.component'
     ContactComponent,
     HeaderComponent,
     FooterComponent,
-    AdoptdetailComponent
+    AdoptdetailComponent,
+    SildeDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

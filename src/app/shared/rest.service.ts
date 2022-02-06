@@ -15,8 +15,8 @@ export class RestService {
 
   createCreditCardCharge(data:any){
     const url='http://localhost:3000/donate'
-    console.log(data)
-    return this.http.post(url, data);
+    // console.log(data)
+    return this.http.post<any>(url, data);
   }
   register(data:any){
     const url='http://localhost:3000/add_user_data'

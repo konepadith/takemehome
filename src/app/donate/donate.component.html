@@ -1,11 +1,98 @@
 <app-header [donate]="pageDonate"></app-header>
-<div class="container">
-  <form>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "default" color = "#fff" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>
 
-    <button id="credit-card" class="btn btn-dark" type="button" (click)="handleclick($event,500)">
-      Pay with Credit Card
-    </button>
+<div class="bg-dark d-flex align-items-center justify-content-center border-banner">
+  <div class="container-fluid banner-img"></div>
+  <div class="h1 text-white fw-bold" style="opacity: 1; position: absolute">
+    Donate for Us
+  </div>
+</div>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-sm-5">
+      <p class="fs-3 fw-bold">
+        GIVE NOW
+      </p>
+      <hr>
+
+
+          You have many opportunities to support
+          causes you are passionate about and
+          appreciate your loyalty to Straydog’s
+          mission. We make it easy and convenient
+          to direct your meaningful gift to make
+          the most impact in a way that is also
+          manageable for your personal finances.
+
+        <form>
+          <button id="credit-card" class="btn mt-2" style="background-color: #FF6363; color: white;" type="button"
+            (click)="handleclick($event,250)">
+            Give now
+          </button>
+        </form>
+
+    </div>
+    <div class="col-sm-5 d-flex">
+      <img src="../../assets/img/pexels-dorte-179221.jpg" class="dog-pic" alt="">
+      <img src="../../assets/img/pexels-apunto-group-agencia-de-publicidad-7752795.jpg" class="dog-pic" alt="">
+    </div>
+  </div>
+
+
+  <p class="text-center mt-5 fs-1">
+    Select On Amount
+  </p>
+  <form>
+    <div class="row justify-content-center">
+      <div class="col-1">
+        <button id="credit-card" class="btn  p-4" style="background-color: #FF6363;color: white;" type="button"
+          (click)="handleclick($event,150)">
+          150
+        </button>
+      </div>
+      <div class="col-1">
+        <button id="credit-card" class="btn  p-4" style="background-color: #FF6363;color: white;" type="button"
+          (click)="handleclick($event,250)">
+          250
+        </button>
+      </div>
+      <div class="col-1">
+        <button id="credit-card" class="btn  p-4" style="background-color: #FF6363;color: white;" type="button"
+          (click)="handleclick($event,300)">
+          300
+        </button>
+      </div>
+      <div class="col-1">
+        <button id="credit-card" class="btn  p-4" style="background-color: #FF6363;color: white;" type="button"
+          (click)="handleclick($event,500)">
+          500
+        </button>
+      </div>
+      <div class="col-1">
+        <button id="credit-card" class="btn  p-4" style="background-color: #FF6363;color: white;" type="button"
+          (click)="handleclick($event,900)">
+          900
+        </button>
+      </div>
+    </div>
+    <div class="row justify-content-center mt-3">
+      <div class="col-2 text-center">
+
+        <button id="credit-card" class="btn btn-primary" (click)="handleclick($event,customedonate)">donate</button>
+      </div>
+    </div>
+
   </form>
+  <div class="row justify-content-center mt-2 mb-5">
+    <div class="col-3">
+      <input [(ngModel)]="customedonate" #ctrl="ngModel" type="number" class="form-control text-center"
+        placeholder="Other Amount">
+    </div>
+  </div>
 </div>
 
 
+
+
+
+<app-footer></app-footer>

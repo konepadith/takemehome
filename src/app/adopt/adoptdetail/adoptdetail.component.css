@@ -1,9 +1,29 @@
 .dog-pic{
-  width: 350px;
-  height: 350px;
+  width: 300px;
+  height: 300px;
+  background: #000;
+}
+.dog-pic img{
   object-fit: scale-down;
+  width: 100%;
+  height: 100%;
+
 }
 .container{
   width: 1100px;
   margin-top: 5rem;
+}
+.img-prev{
+  margin-top: 10px;
+}
+.img-slide{
+  display: inline-block;
+  width: 19%;
+  margin: 0 1px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+.img-prev > .active{
+  border: 2px solid #000;
+  opacity: 1;
 }
