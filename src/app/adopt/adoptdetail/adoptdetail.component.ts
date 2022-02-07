@@ -15,6 +15,7 @@ export class AdoptdetailComponent implements OnInit {
   id:any
   dog_list:any
   user_info:any
+  siteKey="6Lf1ml8eAAAAAOajJs_dt2BdNfOhj-Xz2aj_ll27"
   constructor(private service : RestService , private fb:FormBuilder, private activatedRoute : ActivatedRoute, private spinner : NgxSpinnerService) { }
 
   ngOnInit(): void {
@@ -46,6 +47,7 @@ export class AdoptdetailComponent implements OnInit {
       q_17    :[null,Validators.required],
       q_18    :['2',Validators.required],
       q_19    :[null,Validators.required],
+      recaptcha:        [null,Validators.required],
     })
 
     this.q_5_disable_q_6()

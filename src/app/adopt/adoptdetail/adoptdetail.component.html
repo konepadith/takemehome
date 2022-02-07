@@ -248,7 +248,11 @@
         </div>
         <hr>
         <div class="col-sm-6">
-          <button class="btn btn-primary col-sm-3 text-center" [disabled]="formrequired.invalid" type="submit">Submit</button>
+          <ngx-recaptcha2 #captchaElem
+      [siteKey]="siteKey"
+      formControlName="recaptcha">
+    </ngx-recaptcha2>
+          <button class="btn btn-primary col-sm-3 text-center mt-5" [disabled]="formrequired.invalid" type="submit">Submit</button>
         </div>
 
       </div>
