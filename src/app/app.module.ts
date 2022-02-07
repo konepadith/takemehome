@@ -16,6 +16,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AdoptdetailComponent } from './adopt/adoptdetail/adoptdetail.component';
 import { SildeDirective } from './adopt/adoptdetail/silde.directive';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { NgxCaptchaModule } from 'ngx-captcha';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    NgxCaptchaModule
   ],
   providers: [],
   bootstrap: [AppComponent]

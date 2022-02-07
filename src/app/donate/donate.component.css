@@ -11,7 +11,7 @@
   border-bottom: 8px solid #FF6363;
 }
 .container{
-  width: 1000px;
+  width: 900px;
 }
 .dog-week{
   width: 400px;
@@ -21,4 +21,17 @@
   height: 250px;
   object-fit: scale-down;
   border: 10px solid lightslategray;
+}
+
+@media only screen and (max-width: 950px) {
+  .container{
+    width: 100% ;
+  }
+  .dog-pic{
+    width: 150px;
+    height: 150px;
+    object-fit: scale-down;
+    border: 10px solid lightslategray;
+    margin-top: 2rem;
+  }
 }

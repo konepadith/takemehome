@@ -1,7 +1,7 @@
 <app-header [adopt]="pageAdopt"></app-header>
 <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "default" color = "#fff" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>
 
-<div class="container">
+<div class="container mt-sm-5">
   <div class="row align-items-start " *ngFor="let item of dog_list">
 
 
@@ -25,7 +25,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md">
+    <div class="col-md infor-dog">
       <p class="fs-1">{{ item.dog_name }}</p>
       <p>{{ item.dog_bg }}</p>
       <p>Contact us at takemehome@gmail.com for more information on this dog</p>
@@ -248,7 +248,7 @@
         </div>
         <hr>
         <div class="col-sm-6">
-          <button class="btn btn-primary col-sm-2" [disabled]="formrequired.invalid" type="submit">Submit</button>
+          <button class="btn btn-primary col-sm-3 text-center" [disabled]="formrequired.invalid" type="submit">Submit</button>
         </div>
 
       </div>

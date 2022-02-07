@@ -1,1 +1,94 @@
 <app-header [contact]="pageContact"></app-header>
+<div class="bg-dark d-flex align-items-center justify-content-center border-banner">
+  <div class="container-fluid banner-img"></div>
+  <div class="h1 text-white fw-bold" style="opacity: 1; position: absolute">
+    Contact Us
+  </div>
+</div>
+<div class="container">
+
+  <div class=" mt-5 text-center">
+    <div class="col-sm fs-1 fw-bolder">
+      SEND US A MESSAGE!
+    </div>
+    <div class="col-sm fs-5 text-secondary">
+      Stay connected to TakeMeHome
+    </div>
+  </div>
+</div>
+<div class="container">
+  <form action="" [formGroup]="formmailing" (ngSubmit)="submit_mailing()">
+    <div class="row ">
+      <div class="col-sm-5 mb-3">
+        <label for="">Name</label>
+        <input class="form-control"  [ngClass]="{ 'is-invalid': f.mail_name.hasError('required') &&f.mail_name.invalid && f.mail_name.touched }" type="text" name="name" id="" placeholder="Name" formControlName="mail_name">
+        <small class="p-error text-danger"  *ngIf=" f.mail_name.hasError('required') &&f.mail_name.invalid && f.mail_name.touched">name is require</small>
+      </div>
+      <div class="col-sm-5 mb-3">
+        <label for="">Lastname</label>
+        <input class="form-control" type="text" [ngClass]="{'is-invalid': f.mail_surname.hasError('required') &&f.mail_surname.invalid && f.mail_surname.touched}" name="Lastname" id="" placeholder="Lastname" formControlName="mail_surname">
+        <small class="p-error text-danger" *ngIf=" f.mail_surname.hasError('required') &&f.mail_surname.invalid && f.mail_surname.touched">Lastname is require</small>
+      </div>
+    </div>
+    <div class="row ">
+      <div class="col-sm-5 mb-3">
+        <label for="">Email</label>
+        <input class="form-control" type="email" [ngClass]="{'is-invalid': f.mail_email.errors &&f.mail_email.invalid && f.mail_email.touched}" name="mail_email" id="" placeholder="John.doe@example.com" formControlName="mail_email">
+        <small class="p-error text-danger" *ngIf=" f.mail_email.hasError('required') &&f.mail_email.invalid && f.mail_email.touched">Email is require</small>
+        <small class="p-error text-danger" *ngIf=" f.mail_email.hasError('email') &&f.mail_email.invalid && f.mail_email.touched">Email is invalid form</small>
+      </div>
+      <div class="col-sm-5 mb-3">
+        <label for="">Phone Number</label>
+        <input class="form-control" type="text" [ngClass]="{'is-invalid':f.mail_phone.errors &&f.mail_phone.invalid && f.mail_phone.touche }" name="mail_phone" id="" placeholder="+85620540XXX48" formControlName="mail_phone">
+        <small class="p-error text-danger" *ngIf=" f.mail_phone.hasError('required') &&f.mail_phone.invalid && f.mail_phone.touched">Phone Number is require</small>
+        <small class="p-error text-danger" *ngIf=" f.mail_phone.hasError('pattern') &&f.mail_phone.invalid && f.mail_phone.touched">Phonenumber is invalid format</small>
+      </div>
+    </div>
+    <div class="row ">
+      <div class="col-sm-5 mb-3">
+        <label class="form-label" for="">Best Time to Call</label>
+        <select class="form-select" name="mail_call" [ngClass]="{'is-invalid': f.mail_call.hasError('required') &&f.mail_call.invalid && f.mail_call.touched}" ngModel="Anytime" id="" formControlName="mail_call" >
+          <option value="Anytime" #Anytime>Anytime</option>
+          <option value="AM">AM</option>
+          <option value="PM">PM</option>
+        </select>
+        <small class="p-error text-danger" *ngIf=" f.mail_call.hasError('required') &&f.mail_call.invalid && f.mail_call.touched">Time call is require</small>
+      </div>
+      <div class="col-sm-5 mb-3">
+        <label class="form-label" for="" >Topic of your Message</label>
+        <select class="form-select" ngModel="Adoption" [ngClass]="{'is-invalid': f.mail_topic.hasError('required') &&f.mail_topic.invalid && f.mail_topic.touched}" name="mail_Topic" id=""formControlName="mail_topic" >
+          <option value="Adoption" #Adoption>Adoption</option>
+          <option value="Donation">Donation</option>
+          <option value="Event">Event</option>
+          <option value="Valunteer">Valunteer</option>
+          <option value="Website">Website</option>
+          <option value="Other">Other</option>
+        </select>
+        <small class="p-error text-danger" *ngIf=" f.mail_topic.hasError('required') &&f.mail_topic.invalid && f.mail_topic.touched">Topic is require</small>
+      </div>
+    </div>
+    <div class="row ">
+      <div class="col-sm-10 mb-3">
+        <label class="form-label" for="">Message</label>
+        <textarea class="form-control" name="mail_msg" [ngClass]="{'is-invalid': f.mail_msg.hasError('required') &&f.mail_msg.invalid && f.mail_msg.touched}" id="" cols="8" rows="8" placeholder="Type your message here..." formControlName="mail_msg"></textarea>
+        <small class="p-error text-danger" *ngIf=" f.mail_msg.hasError('required') &&f.mail_msg.invalid && f.mail_msg.touched">Topic is require</small>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3 mb-3" >
+        <ngx-recaptcha2 #captchaElem
+      [siteKey]="siteKey"
+      formControlName="recaptcha">
+    </ngx-recaptcha2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 mb-3">
+        <button class="btn btn-primary" type="submit" [disabled]="formmailing.invalid">Send</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<app-footer></app-footer>

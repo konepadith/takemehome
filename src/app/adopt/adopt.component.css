@@ -22,3 +22,20 @@
   object-fit: scale-down;
   border: 10px solid lightslategray;
 }
+
+@media only screen and (max-width: 600px) {
+  .container{
+    width: 100% ;
+  }
+  /* .infor-dog{
+    margin-top: 5rem;
+  }*/
+  .dog-pic{
+    width: 100%;
+    height: 300px;
+    background: #000;
+  }
+  .dog-week{
+    width: 100%;
+  }
+}

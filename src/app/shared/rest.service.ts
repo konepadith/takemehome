@@ -50,5 +50,9 @@ export class RestService {
     const url='http://localhost:3000/required'
     return this.http.post<any>(url,data)
   }
+  receive(data:any){
+    const url='http://localhost:3000/receive'
+    return this.http.post<any>(url,data)
+  }
 
 }
