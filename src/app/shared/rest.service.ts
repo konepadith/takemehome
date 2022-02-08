@@ -54,5 +54,9 @@ export class RestService {
     const url='http://localhost:3000/receive'
     return this.http.post<any>(url,data)
   }
+  events_data(){
+    const url='http://localhost:3000/events_data'
+    return this.http.get<any>(url)
+  }
 
 }

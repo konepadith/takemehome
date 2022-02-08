@@ -7,6 +7,7 @@ import { ContactComponent } from './contact/contact.component';
 import { DonateComponent } from './donate/donate.component';
 import { HomeComponent } from './home/home.component';
 import { NewseventComponent } from './newsevent/newsevent.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {path: '',   redirectTo: '/home', pathMatch: 'full' },
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path:'donate',component:DonateComponent},
   {path:'news_event',component:NewseventComponent},
   {path:'contact',component:ContactComponent},
-  {path:'adoptdetail/:id',component:AdoptdetailComponent}
+  {path:'adoptdetail/:id',component:AdoptdetailComponent},
+  {path:'profile/:name',component:ProfileComponent}
 ];
 
 @NgModule({
@@ -25,4 +27,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 
-export const routingComponents= [HomeComponent,AboutComponent,AdoptComponent,DonateComponent,NewseventComponent,ContactComponent,AdoptdetailComponent]
+export const routingComponents= [HomeComponent,AboutComponent,AdoptComponent,DonateComponent,NewseventComponent,ContactComponent,AdoptdetailComponent,ProfileComponent]

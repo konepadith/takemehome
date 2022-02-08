@@ -1,1 +1,58 @@
 <app-header [news_event]="pageNewsevent"></app-header>
+<div class="bg-dark d-flex align-items-center justify-content-center border-banner">
+  <div class="container-fluid banner-img"></div>
+  <div class="h1 text-white fw-bold" style="opacity: 1; position: absolute">
+    NEWS & EVENTS
+  </div>
+</div>
+<div class="container">
+  <div class=" mt-5 text-center text-primary">
+    <div class="col-sm fs-1 fw-bolder text-dark">
+      SPECIAL EVENTS
+    </div>
+    <div class="col-sm mt-5 pt-5 pb-5 fw-bolder fs-1 text-primary border-top border-bottom border-danger text-dark">
+      ADOPTION EVENTS
+    </div>
+    <div class="col-sm mt-5 fs-5 text-start text-secondary">
+      Straydog is conducting adoption/home visits again! We also welcome potential adopters to the shelter by appointment. Please contact us by email at straydogshelter@gmail.com or phone: (903) 479-3497. Let us know which dog you are interested in adopting! View our pups here.
+    </div>
+    <div *ngFor="let item of eventsList">
+      <div class="col-sm mt-5 mb-5 bg-dark p-4 rounded-1">
+        <div class="row">
+          <div class="col-3">
+            <p class="fs-3 text-white fw-light text-uppercase">{{ item.event_date | date:'ccc' }}</p>
+            <p class="text-danger fs-1 fw-bold text-uppercase">{{item.event_date | date:'MMM'}}</p>
+            <p class="text-danger fs-1 fw-bold">{{item.event_date | date:'dd'}}</p>
+          </div>
+          <div class="col text-start">
+            <p class="fs-2 text-white">{{item.event_topic}}</p>
+            <p class="fs-4 text-secondary">{{item.event_start}} {{item.event_end}}</p>
+            <p class="fs-4 text-secondary">{{item.event_place}}</p>
+            <a class="text-decoration-none text-danger text-start fw-bold text-uppercase" href="{{item.event_direction}}" target="_blank">get direction</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div *ngIf="checkevent" class="col-sm mt-5 mb-5 bg-dark p-3">
+        <div class="row">
+          <div class="col-3">
+            <p class="fs-3 text-white fw-light text-uppercase"></p>
+            <p class="text-danger fs-1 fw-bold text-uppercase">No event</p>
+            <p class="text-danger fs-1 fw-bold"></p>
+          </div>
+          <div class="col text-start">
+            <p class="fs-2 text-white">There aren't event now</p>
+            <p class="fs-4 text-secondary">We will comming soon</p>
+            <p class="fs-4 text-secondary"></p>
+            <a class="text-decoration-none text-danger text-start fw-bold text-uppercase" href="" target="_blank"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<app-footer></app-footer>

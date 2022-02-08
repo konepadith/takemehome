@@ -1,0 +1,12 @@
+.banner-img {
+  height: 60vh;
+  background-repeat: no-repeat;
+  background-image: url('../../assets/img/pexels-josh-hild-2820134.jpg');
+  background-position: right 50% bottom 50%;
+
+  background-size: cover;
+  opacity: 0.5;
+}
+.border-banner{
+  border-bottom: 8px solid #FF6363;
+}

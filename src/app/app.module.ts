@@ -17,6 +17,9 @@ import { AdoptdetailComponent } from './adopt/adoptdetail/adoptdetail.component'
 import { SildeDirective } from './adopt/adoptdetail/silde.directive';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { NgxCaptchaModule } from 'ngx-captcha';
+import { ProfileComponent } from './profile/profile.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +32,8 @@ import { NgxCaptchaModule } from 'ngx-captcha';
     HeaderComponent,
     FooterComponent,
     AdoptdetailComponent,
-    SildeDirective
+    SildeDirective,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +42,9 @@ import { NgxCaptchaModule } from 'ngx-captcha';
     FormsModule,
     ReactiveFormsModule,
     NgxSpinnerModule,
-    NgxCaptchaModule
+    NgxCaptchaModule,
+    MatTabsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

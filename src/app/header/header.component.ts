@@ -40,8 +40,9 @@ export class HeaderComponent implements OnInit {
   user_village='' //give default value for Show Selected option default
   user_status= JSON.parse(localStorage.getItem("user") || "[]").status
   user_info=JSON.parse(localStorage.getItem("user") || "[]")
+  // profilename=JSON.parse(localStorage.getItem("user") || "[]").data[0].user_name
 
-  constructor(private service: RestService , private fb:FormBuilder,private cd: ChangeDetectorRef) { }
+  constructor(private service: RestService , private fb:FormBuilder,private cd: ChangeDetectorRef,private router:Router) { }
 
   ngOnInit(): void {
     this.Registration = this.fb.group({
@@ -202,6 +203,9 @@ onFIleSelect(event:any, field:any) {
     this.user_village=''
   }
 
+  profile(name:string){
+    this.router.navigate(['profile',name])
+  }
 
 
 }

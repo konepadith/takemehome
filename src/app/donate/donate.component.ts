@@ -15,6 +15,7 @@ export class DonateComponent implements OnInit {
   // email:any=JSON.parse(localStorage.getItem("user") || "[]").data[0].user_email
   // name:any=JSON.parse(localStorage.getItem("user") || "[]").data[0].user_name
   cart={
+    user_id:'',
     email:'',
     name:'',
     amount:0,
@@ -113,6 +114,7 @@ export class DonateComponent implements OnInit {
       this.cart.amount=amount*100
       this.cart.email=JSON.parse(localStorage.getItem("user") || "[]").data[0].user_email
       this.cart.name=JSON.parse(localStorage.getItem("user") || "[]").data[0].user_name
+      this.cart.user_id=JSON.parse(localStorage.getItem("user") || "[]").data[0].user_id
       this.creditCardConfigure()
       this.omisecardHandler()
       }
@@ -120,9 +122,5 @@ export class DonateComponent implements OnInit {
 
 
 
-}
-
-test(){
-  console.log(this.customedonate)
 }
 }

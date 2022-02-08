@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RestService } from '../shared/rest.service';
 
 @Component({
   selector: 'app-newsevent',
@@ -8,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 export class NewseventComponent implements OnInit {
 
   pageNewsevent=true
-  constructor() { }
+  eventsList:any=[]
+  checkevent=false
+  constructor(private service : RestService) { }
 
   ngOnInit(): void {
+  this.service.events_data().subscribe(response=>{
+    console.log(response.data.length)
+    if (response.data.length<=0) {
+      this.checkevent=true
+    } else {
+      this.eventsList=response.data
+    }
+
+  })
   }
 
 }

@@ -1,0 +1,132 @@
+ <app-header></app-header>
+<div
+  class="bg-dark d-flex align-items-center justify-content-center border-banner"
+>
+  <div class="container-fluid banner-img"></div>
+  <div class="h1 text-white fw-bold text-uppercase" style="opacity: 1; position: absolute;">
+    profile
+  </div>
+</div>
+<div class="container text-center bg-dark">
+  <img src="{{this.user_info.data[0].user_img}}" class="profile_img mt-5" alt="">
+  <p class="mt-4 fs-4 fw-bold text-white">{{this.user_info.data[0].user_name}} {{ this.user_info.data[0].user_surname }}</p>
+  <p class="mt-1 fs-6 fw-light text-white">{{this.user_info.data[0].user_email}}</p>
+
+  <hr class="text-white">
+
+
+</div>
+
+  <div class="container mb-5 h-100">
+    <mat-tab-group animationDuration="0ms" mat-align-tabs="center">
+      <mat-tab label="Personal" >
+        <div class="mt-5">
+          <p class="text-center fs-4">Personal Details</p>
+          <form>
+            <div class="row w-100 justify-content-center">
+              <div class="col-sm-4">
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control shadow-none" id="floatingInput" placeholder="John">
+                  <label for="floatingInput">Name</label>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control shadow-none" id="floatingInput" placeholder="Doe">
+                  <label for="floatingInput">Surname</label>
+                </div>
+              </div>
+            </div>
+            <div class="row w-100 justify-content-center">
+              <div class="col-sm-8">
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control shadow-none" id="floatingInput" placeholder="name@example.com">
+                  <label for="floatingInput">Email</label>
+                </div>
+              </div>
+            </div>
+            <div class="row w-100 justify-content-center">
+              <div class="col-sm-4">
+                <div class="form-floating col mb-3">
+                  <select class="form-select" id="floatingSelect">
+                    <option disable seleted hidden value="">Select gender</option>
+                    <option value="1">Male</option>
+                    <option value="2">Female</option>
+                    <option value="3">Others</option>
+                  </select>
+                  <label for="floatingSelect">&nbsp; Gender</label>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-floating">
+                  <input  type="date" name="user_dob" id="user_dob" class="form-control">
+                  <label for="user_dob">&nbsp; Date of Birth</label>
+                </div>
+              </div>
+            </div>
+            <div class="row w-100 justify-content-center">
+              <div class="col-sm-4">
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control shadow-none" id="floatingInput" placeholder="Doe">
+                  <label for="floatingInput">Phone Number</label>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control shadow-none" id="floatingInput" placeholder="Doe">
+                  <label for="floatingInput">Workplace</label>
+                </div>
+              </div>
+            </div>
+            <div class="row w-100 justify-content-center">
+              <div class="col-sm-4">
+                <div class="form-floating mb-3">
+                  <select class="form-select" id="user_province">
+                    <option seleted  value="">Select Province</option>
+                  </select>
+                  <label for="user_province">&nbsp; Province</label>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-floating mb-3">
+                  <select class="form-select" id="user_province">
+                    <option seleted  value="">Select District</option>
+                  </select>
+                  <label for="user_province">&nbsp; District</label>
+                </div>
+              </div>
+            </div>
+            <div class="row w-100 justify-content-center">
+              <div class="col-sm-8">
+                <div class="form-floating mb-3">
+                  <select class="form-select" id="user_province">
+                    <option seleted  value="">Select Village</option>
+                  </select>
+                  <label for="user_province">&nbsp; Village</label>
+                </div>
+              </div>
+            </div>
+            <div class="row w-100 justify-content-center">
+              <div class="col-sm-4 text-center">
+                <button type="submit" class="btn btn-dark pt-1 pb-1 text-center">Save</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </mat-tab>
+      <mat-tab label="Donation">
+        <div class="mt-5">
+          <p class="text-center fs-4">Donation Details</p>
+        </div>
+      </mat-tab>
+      <mat-tab label="Adoption">
+        <div class="mt-5">
+          <p class="text-center fs-4">Adoption Details</p>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+
+
+<app-footer></app-footer>
+
