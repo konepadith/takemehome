@@ -16,3 +16,8 @@
   border-radius: 50%;
   object-position: 60% 40%;
 }
+@media only screen and (max-width: 600px){
+  .border-banner{
+    border-bottom: none;
+  }
+}
