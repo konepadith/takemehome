@@ -1,4 +1,7 @@
  <app-header></app-header>
+
+ <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "default" color = "#fff" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>
+
 <div
   class="bg-dark d-flex align-items-center justify-content-center border-banner"
 >
@@ -17,63 +20,55 @@
 
 </div>
 
-  <div class="container mb-5 h-100">
+  <div class="container mb-5">
     <mat-tab-group animationDuration="0ms" mat-align-tabs="center">
       <mat-tab label="Personal" >
         <div class="mt-5">
           <p class="text-center fs-4">Personal Details</p>
-          <form>
+          <form [formGroup]="personal" (ngSubmit)="updateUser()">
             <div class="row w-100 justify-content-center">
               <div class="col-sm-4">
                 <div class="form-floating mb-3">
-                  <input type="text" class="form-control shadow-none" id="floatingInput" placeholder="John">
+                  <input type="text" class="form-control shadow-none" id="floatingInput" placeholder="John" formControlName="user_name">
                   <label for="floatingInput">Name</label>
                 </div>
               </div>
               <div class="col-sm-4">
                 <div class="form-floating mb-3">
-                  <input type="text" class="form-control shadow-none" id="floatingInput" placeholder="Doe">
+                  <input type="text" class="form-control shadow-none" id="floatingInput" placeholder="Doe" formControlName="user_surname">
                   <label for="floatingInput">Surname</label>
-                </div>
-              </div>
-            </div>
-            <div class="row w-100 justify-content-center">
-              <div class="col-sm-8">
-                <div class="form-floating mb-3">
-                  <input type="email" class="form-control shadow-none" id="floatingInput" placeholder="name@example.com">
-                  <label for="floatingInput">Email</label>
                 </div>
               </div>
             </div>
             <div class="row w-100 justify-content-center">
               <div class="col-sm-4">
                 <div class="form-floating col mb-3">
-                  <select class="form-select" id="floatingSelect">
-                    <option disable seleted hidden value="">Select gender</option>
+                  <select class="form-select shadow-none" id="floatingSelect" formControlName="user_gender">
+                    <option disable seleted hidden value="" >Select gender</option>
                     <option value="1">Male</option>
                     <option value="2">Female</option>
                     <option value="3">Others</option>
                   </select>
-                  <label for="floatingSelect">&nbsp; Gender</label>
+                  <label for="floatingSelect">Gender</label>
                 </div>
               </div>
               <div class="col-sm-4">
                 <div class="form-floating mb-3">
-                  <input  type="date" name="user_dob" id="user_dob" class="form-control">
-                  <label for="user_dob">&nbsp; Date of Birth</label>
+                  <input  type="date" name="user_dob" id="user_dob" class="form-control shadow-none" formControlName="user_dob">
+                  <label for="user_dob">Date of Birth</label>
                 </div>
               </div>
             </div>
             <div class="row w-100 justify-content-center">
               <div class="col-sm-4">
                 <div class="form-floating mb-3">
-                  <input type="text" class="form-control shadow-none" id="floatingInput" placeholder="Doe">
+                  <input type="text" class="form-control shadow-none" id="floatingInput" placeholder="+8562054048008" formControlName="user_phoneNumber">
                   <label for="floatingInput">Phone Number</label>
                 </div>
               </div>
               <div class="col-sm-4">
                 <div class="form-floating mb-3">
-                  <input type="text" class="form-control shadow-none" id="floatingInput" placeholder="Doe">
+                  <input type="text" class="form-control shadow-none" id="floatingInput" placeholder="Doe" formControlName="user_workplace">
                   <label for="floatingInput">Workplace</label>
                 </div>
               </div>
@@ -81,16 +76,16 @@
             <div class="row w-100 justify-content-center">
               <div class="col-sm-4">
                 <div class="form-floating mb-3">
-                  <select class="form-select" id="user_province">
-                    <option seleted  value="">Select Province</option>
+                  <select class="form-select shadow-none" id="user_province" formControlName="user_province" (change)="onSelectprovince($event)">
+                    <option *ngFor="let item of provinceList" value="{{ item.id_province }}">{{ item.name_lao }}</option>
                   </select>
                   <label for="user_province">&nbsp; Province</label>
                 </div>
               </div>
               <div class="col-sm-4">
                 <div class="form-floating mb-3">
-                  <select class="form-select" id="user_province">
-                    <option seleted  value="">Select District</option>
+                  <select class="form-select shadow-none" id="user_district" formControlName="user_district" (change)="onSelectdistrict($event)">
+                    <option *ngFor="let item of district_data" value="{{ item.id_district }}">{{ item.name_lao }}</option>
                   </select>
                   <label for="user_province">&nbsp; District</label>
                 </div>
@@ -99,8 +94,8 @@
             <div class="row w-100 justify-content-center">
               <div class="col-sm-8">
                 <div class="form-floating mb-3">
-                  <select class="form-select" id="user_province">
-                    <option seleted  value="">Select Village</option>
+                  <select class="form-select shadow-none" id="user_village" formControlName="user_village">
+                    <option *ngFor="let item of village_data" value="{{ item.id_village }}">{{ item.name_lao }}</option>
                   </select>
                   <label for="user_province">&nbsp; Village</label>
                 </div>
@@ -108,25 +103,84 @@
             </div>
             <div class="row w-100 justify-content-center">
               <div class="col-sm-4 text-center">
-                <button type="submit" class="btn btn-dark pt-1 pb-1 text-center">Save</button>
+                <button type="submit" class="btn btn-dark p-3  me-3 text-center shadow-none" [disabled]="edit">Save</button>
+                <button type="button" class="btn btn-success p-3  text-center shadow-none" *ngIf="edit" (click)="canedit()">Edit</button>
+                <button type="button" class="btn btn-danger p-3  text-center shadow-none" *ngIf="notedit" (click)="canotedit()">Cancel</button>
               </div>
             </div>
           </form>
         </div>
       </mat-tab>
       <mat-tab label="Donation">
-        <div class="mt-5">
-          <p class="text-center fs-4">Donation Details</p>
+        <div class="mt-5 text-center">
+          <div *ngFor="let item of doante_data">
+            <div class="col-sm mt-5 mb-5 bg-dark p-4 rounded-1">
+              <div class="row">
+                <div class="col-3">
+                  <p class="fs-3 text-white fw-light text-uppercase">{{ item.donate_create_at | date:'YYYY' }}</p>
+                  <p class="text-danger fs-1 fw-bold text-uppercase">{{ item.donate_create_at | date:'MMM' }}</p>
+                  <p class="text-danger fs-1 fw-bold">{{ item.donate_create_at | date:'dd' }}</p>
+                </div>
+                <div class="col text-start">
+                  <p class="fs-2 text-white">Donation</p>
+                  <p class="fs-4 text-secondary"> {{item.donate_price/100 | currency:'฿ ':true:''}} Baht</p>
+                  <p class="fs-4 text-secondary">{{item.donate_bill}}</p>
+                  <!-- <a class="text-decoration-none text-danger text-start fw-bold text-uppercase" href="{{item.event_direction}}" target="_blank">get direction</a> -->
+                </div>
+                <div class="col text-white">
+                  <p class="fs-1 text-success">Thank You</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </mat-tab>
       <mat-tab label="Adoption">
         <div class="mt-5">
-          <p class="text-center fs-4">Adoption Details</p>
+          <div class="mt-5 text-center">
+            <div *ngFor="let item of form_data">
+              <div class="col-sm mt-5 mb-5 bg-dark p-4 rounded-1">
+                <div class="row">
+                  <div class="col-3">
+                    <p class="fs-3 text-white fw-light text-uppercase">{{item.form_create_at | date:'YYYY'}}</p>
+                    <p class="text-danger fs-1 fw-bold text-uppercase">{{item.form_create_at | date:'MMM'}}</p>
+                    <p class="text-danger fs-1 fw-bold">{{item.form_create_at | date:'dd'}}</p>
+                  </div>
+                  <div class="col text-start">
+                    <p class="fs-2 text-white">Request</p>
+                    <p class="fs-4 text-secondary">{{item.dog_name}}</p>
+                    <p *ngIf="item.form_status == 0" class="fs-4 text-secondary">Status: <span class="text-warning">Pending</span></p>
+                    <p *ngIf="item.form_status == 1" class="fs-4 text-secondary">Status: <span class="text-success">Accept</span> We will send you an email</p>
+                    <p *ngIf="item.form_status == 2" class="fs-4 text-secondary">Status: <span class="text-danger">rejected</span></p>
+                    <a class="text-decoration-none text-danger text-start fw-bold text-uppercase" (click)="routing(item.dog_id)" type="button" target="_blank">get dog info</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div *ngIf="checkeform" class="col-sm mt-5 mb-5 bg-dark p-3">
+                <div class="row">
+                  <div class="col-3">
+                    <p class="fs-3 text-white fw-light text-uppercase"></p>
+                    <p class="text-danger fs-1 fw-bold text-uppercase">No event</p>
+                    <p class="text-danger fs-1 fw-bold"></p>
+                  </div>
+                  <div class="col text-start">
+                    <p class="fs-2 text-white">There aren't event now</p>
+                    <p class="fs-4 text-secondary">We will comming soon</p>
+                    <p class="fs-4 text-secondary"></p>
+                    <a class="text-decoration-none text-danger text-start fw-bold text-uppercase" href="" target="_blank"></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </mat-tab>
     </mat-tab-group>
   </div>
-
+<br>
+<br>
 
 <app-footer></app-footer>
 

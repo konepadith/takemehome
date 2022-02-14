@@ -20,6 +20,7 @@ import { NgxCaptchaModule } from 'ngx-captcha';
 import { ProfileComponent } from './profile/profile.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { CachingInterceptor } from './interceptor/caching.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +47,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     MatTabsModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass: CachingInterceptor,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

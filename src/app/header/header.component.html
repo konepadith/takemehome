@@ -196,6 +196,7 @@
               <input [ngClass]="{'is-invalid':  f.user_phoneNumber.invalid && f.user_phoneNumber.touched }" type="text" class="form-control" id="user_phoneNumber" placeholder="Phone Number 20540XXXXXX" formControlName="user_phoneNumber">
               <label for="user_phoneNumber">&nbsp; Phone Number</label>
               <small class="p-error text-danger" *ngIf=" f.user_phoneNumber.hasError('required') &&f.user_phoneNumber.invalid && f.user_phoneNumber.touched">Phone Number is require</small>
+              <small class="p-error text-danger" *ngIf=" f.user_phoneNumber.hasError('pattern') &&f.user_phoneNumber.invalid && f.user_phoneNumber.touched">Phonenumber is invalid format</small>
             </div>
           </div>
           <div class="form-label">

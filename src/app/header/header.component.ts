@@ -58,7 +58,7 @@ export class HeaderComponent implements OnInit {
       user_district:    [null,Validators.required],
       user_province:    [null,Validators.required],
       user_workplace:   [null,Validators.required],
-      user_phoneNumber: [null,Validators.required],
+      user_phoneNumber: [null,Validators.compose([Validators.required,Validators.pattern("^[+][0-9]{10,15}$")])],
     },{
       validators:this.MustMatch('user_password','confirm_password') //Corfirm password function
     })
@@ -126,8 +126,11 @@ onFIleSelect(event:any, field:any) {
   submit_registration(){
 
     if (this.Registration.invalid) {
-      this.submitted = true;
-      console.log("Valid form",this.submitted)
+      Swal.fire({
+        icon: 'error',
+        title: 'Form is Invalid',
+        text: 'Please input all Fill',
+        })
     } else {
       const data= new FormData(); //Create Data Store by FormData()
       Object.entries(this.Registration.value).forEach(([key,value]:any[])=>{

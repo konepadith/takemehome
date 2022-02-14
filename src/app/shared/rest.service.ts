@@ -58,5 +58,16 @@ export class RestService {
     const url='http://localhost:3000/events_data'
     return this.http.get<any>(url)
   }
-
+  update_user(data:any){
+    const url='http://localhost:3000/update_user'
+    return this.http.post<any>(url,data)
+  }
+  data_donate(id:any){
+    const url='http://localhost:3000/data_donate?id='+id
+    return this.http.get<any>(url)
+  }
+  show_form_uid(id:any){
+    const url='http://localhost:3000/show_form_uid?id='+id
+    return this.http.get<any>(url)
+  }
 }
