@@ -5,69 +5,69 @@ import { HttpClient } from '@angular/common/http';
 })
 export class RestService {
 
-   url = "http://localhost:3000/"
+   url = "http://localhost:3000"
 
   constructor( private http : HttpClient) { }
 
   dogs_data(){
-    return this.http.get<any>(this.url+'dogs_data')
+    return this.http.get<any>(this.url+'/dogs_data')
   }
 
   createCreditCardCharge(data:any){
-    const url='http://localhost:3000/donate'
+    const url=this.url+'/donate'
     // console.log(data)
     return this.http.post<any>(url, data);
   }
   register(data:any){
-    const url='http://localhost:3000/add_user_data'
+    const url=this.url+'/add_user_data'
     // const data={data_image,data_text}
     return this.http.post<any>(url,data)
   }
   login(data:any){
-    const url ='http://localhost:3000/login'
+    const url =this.url+'/login'
     return this.http.post<any>(url,data)
   }
 
   village(){
-    const url='http://localhost:3000/village'
+    const url=this.url+'/village'
     return this.http.get<any>(url)
   }
 
   district(){
-    const url='http://localhost:3000/district'
+    const url=this.url+'/district'
     return this.http.get<any>(url)
   }
 
   province(){
-    const url='http://localhost:3000/province'
+    const url=this.url+'/province'
     return this.http.get<any>(url)
   }
   data_dog_id(id:any){
-    const url='http://localhost:3000/data_dog_id?id='+id
+    const url=this.url+'/data_dog_id?id='+id
     return this.http.get<any>(url)
   }
   required_adopt(data:any){
-    const url='http://localhost:3000/required'
+    const url=this.url+'/required'
     return this.http.post<any>(url,data)
   }
   receive(data:any){
-    const url='http://localhost:3000/receive'
+    const url=this.url+'/receive'
     return this.http.post<any>(url,data)
   }
   events_data(){
-    const url='http://localhost:3000/events_data'
+    const url=this.url+'/events_data'
     return this.http.get<any>(url)
   }
   update_user(data:any){
-    const url='http://localhost:3000/update_user'
+    const url=this.url+'/update_user'
     return this.http.post<any>(url,data)
   }
   data_donate(id:any){
-    const url='http://localhost:3000/data_donate?id='+id
+    const url=this.url+'/data_donate?id='+id
     return this.http.get<any>(url)
   }
   show_form_uid(id:any){
-    const url='http://localhost:3000/show_form_uid?id='+id
+    const url=this.url+'/show_form_uid?id='+id
     return this.http.get<any>(url)
   }
 }

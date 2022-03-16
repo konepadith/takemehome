@@ -136,6 +136,7 @@ onFIleSelect(event:any, field:any) {
       Object.entries(this.Registration.value).forEach(([key,value]:any[])=>{
       data.set(key,value)
     })
+    console.log(data)
     this.service.register(data).subscribe(response=>{
           console.log(response)
           if (response.status ==0 ) {

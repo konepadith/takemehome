@@ -84,7 +84,7 @@
               </div>
               <div class="col-sm-4">
                 <div class="form-floating mb-3">
-                  <select class="form-select shadow-none" id="user_district" formControlName="user_district" (change)="onSelectdistrict($event)">
+                  <select class="form-select shadow-none" id="user_district" formControlName="user_district" [(ngModel)]="user_district" (change)="onSelectdistrict($event)">
                     <option *ngFor="let item of district_data" value="{{ item.id_district }}">{{ item.name_lao }}</option>
                   </select>
                   <label for="user_province">&nbsp; District</label>
@@ -94,7 +94,7 @@
             <div class="row w-100 justify-content-center">
               <div class="col-sm-8">
                 <div class="form-floating mb-3">
-                  <select class="form-select shadow-none" id="user_village" formControlName="user_village">
+                  <select class="form-select shadow-none" id="user_village" [(ngModel)]="user_village" formControlName="user_village">
                     <option *ngFor="let item of village_data" value="{{ item.id_village }}">{{ item.name_lao }}</option>
                   </select>
                   <label for="user_province">&nbsp; Village</label>

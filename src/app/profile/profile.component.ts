@@ -27,8 +27,8 @@ export class ProfileComponent implements OnInit {
   village_data:any=[] //Represent Data Filtered
 
   user_province='' //give default value for Show Selected option default
-  user_district='' //give default value for Show Selected option default
-  user_village='' //give default value for Show Selected option default
+  user_district=this.user_info.data[0].user_district //give default value for Show Selected option default
+  user_village=this.user_info.data[0].user_village //give default value for Show Selected option default
 
   checkeform=false
 
@@ -54,13 +54,17 @@ export class ProfileComponent implements OnInit {
     this.edit=true
     this.service.village().subscribe(response=>{
       this.villageList=response.data
-      this.village_data=response.data
+      this.village_data=this.villageList.filter((res: { id_district: string; })=>{
+        return res.id_district.toLowerCase().match(this.user_info.data[0].user_district.toLocaleLowerCase())
+      })
       this.spinner.hide();
     })
 
     this.service.district().subscribe(response=>{
       this.districtList=response.data
-      this.district_data=response.data
+      this.district_data=this.districtList.filter((res: { id_province: string; })=>{
+        return res.id_province.toLowerCase().match(this.user_info.data[0].user_province.toLocaleLowerCase())
+      })
 
     })
 
