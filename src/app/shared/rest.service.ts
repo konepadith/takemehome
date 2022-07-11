@@ -70,4 +70,5 @@ export class RestService {
     const url=this.url+'/show_form_uid?id='+id
     return this.http.get<any>(url)
   }
+
 }

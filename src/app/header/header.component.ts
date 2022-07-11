@@ -34,7 +34,6 @@ export class HeaderComponent implements OnInit {
   district_data:any=[] //Represent Data Filtered
   village_data:any=[] //Represent Data Filtered
 
-  selectFile: any
 
   user_district='' //give default value for Show Selected option default
   user_village='' //give default value for Show Selected option default
@@ -102,7 +101,7 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  //I don't know But it works with Upload Image and text to API together
+  // I don't know But it works with Upload Image and text to API together
 onFIleSelect(event:any, field:any) {
   if (event.target.files && event.target.files.length) {
     const [file] = event.target.files;

@@ -11,19 +11,37 @@ export class ContactComponent implements OnInit {
   formmailing:any = FormGroup;
   pageContact=true
   siteKey="6Lf1ml8eAAAAAOajJs_dt2BdNfOhj-Xz2aj_ll27"
+
+  user_status= JSON.parse(localStorage.getItem("user") || "[]").status
+
+  user_info=JSON.parse(localStorage.getItem("user") || "[]")
   constructor(private service : RestService , private fb:FormBuilder) { }
 
   ngOnInit(): void {
-    this.formmailing = this.fb.group({
-      mail_name:        [null,Validators.required],
-      mail_surname:     [null,Validators.required],
-      mail_email:       [null,Validators.compose([Validators.required,Validators.email])],
-      mail_phone:       [null,Validators.compose([Validators.required,Validators.pattern("^[+][0-9]{10,15}$")])],
-      mail_call:        [null,Validators.required],
-      mail_topic:       [null,Validators.required],
-      mail_msg:         [null,Validators.required],
-      recaptcha:        [null,Validators.required],
-    })
+    if (this.user_status==1) {
+      this.formmailing = this.fb.group({
+        mail_name:        [this.user_info.data[0].user_name,Validators.required],
+        mail_surname:     [this.user_info.data[0].user_surname,Validators.required],
+        mail_email:       [this.user_info.data[0].user_email,Validators.compose([Validators.required,Validators.email])],
+        mail_phone:       [this.user_info.data[0].user_phoneNumber,Validators.compose([Validators.required,Validators.pattern("^[+][0-9]{10,15}$")])],
+        mail_call:        [null,Validators.required],
+        mail_topic:       [null,Validators.required],
+        mail_msg:         [null,Validators.required],
+        recaptcha:        [null,Validators.required],
+      })
+      console.log('HI')
+    } else {
+      this.formmailing = this.fb.group({
+        mail_name:        [null,Validators.required],
+        mail_surname:     [null,Validators.required],
+        mail_email:       [null,Validators.compose([Validators.required,Validators.email])],
+        mail_phone:       [null,Validators.compose([Validators.required,Validators.pattern("^[+][0-9]{10,15}$")])],
+        mail_call:        [null,Validators.required],
+        mail_topic:       [null,Validators.required],
+        mail_msg:         [null,Validators.required],
+        recaptcha:        [null,Validators.required],
+      })
+    }
   }
 
   get f() { return this.formmailing.controls; }

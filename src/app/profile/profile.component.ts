@@ -43,13 +43,14 @@ export class ProfileComponent implements OnInit {
       user_name:        [this.user_info.data[0].user_name,Validators.required],
       user_surname:     [this.user_info.data[0].user_surname,Validators.required],
       user_gender:      [this.user_info.data[0].user_gender,Validators.required],
-      user_dob:         [this.user_info.data[0].user_dob,Validators.required],
+      user_dob:         ['',Validators.required],
       user_village:     [this.user_info.data[0].user_village,Validators.required],
       user_district:    [this.user_info.data[0].user_district,Validators.required],
       user_province:    [this.user_info.data[0].user_province,Validators.required],
       user_workplace:   [this.user_info.data[0].user_workplace,Validators.required],
       user_phoneNumber: [this.user_info.data[0].user_phoneNumber,Validators.compose([Validators.required,Validators.pattern("^[+][0-9]{10,15}$")])],
     })
+    this.personal.get('user_dob').patchValue(this.formatDate(this.user_info.data[0].user_dob));
 
     this.edit=true
     this.service.village().subscribe(response=>{
@@ -157,5 +158,14 @@ export class ProfileComponent implements OnInit {
 
 routing(id:any){
   this.router.navigate(['adoptdetail',id])
+}
+private formatDate(date:any) {
+  const d = new Date(date);
+  let month = '' + (d.getMonth() + 1);
+  let day = '' + d.getDate();
+  const year = d.getFullYear();
+  if (month.length < 2) month = '0' + month;
+  if (day.length < 2) day = '0' + day;
+  return [year, month, day].join('-');
 }
 }
