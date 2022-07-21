@@ -4,45 +4,47 @@
   <div class="container">
     <a class="navbar-brand" href="#">
       <img src="../../assets/img/house.png" height="35" width="35" alt="" class="d-inline-block align-top">
-      <span>Take me Home</span></a>
+      <span>ເອົານ້ອງໝາກັບບ້ານ</span></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link " [ngClass]="{'active':home}" aria-current="page" routerLink="/home">Home</a>
+          <a class="nav-link " [ngClass]="{'active':home}" aria-current="page" routerLink="/home">ໜ້າຫຼັກ</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [ngClass]="{'active':about}" routerLink="/about">About Us</a>
+          <a class="nav-link" [ngClass]="{'active':about}" routerLink="/about">ກ່ຽວກັບພວກເຮົາ</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [ngClass]="{'active':adopt}"  routerLink="/adopt">Adopt</a>
+          <a class="nav-link" [ngClass]="{'active':adopt}"  routerLink="/adopt">ນຳໝາໄປລ້ຽງ</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [ngClass]="{'active':donate}"  routerLink="/donate">Donate</a>
+          <a class="nav-link" [ngClass]="{'active':donate}"  routerLink="/donate">ບໍລິຈາກເງິນ
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [ngClass]="{'active':news_event}"  routerLink="/news_event">News & Event</a>
+          <a class="nav-link" [ngClass]="{'active':news_event}"  routerLink="/news_event">ຂ່າວ ແລະ ກິດຈະກຳ</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [ngClass]="{'active':contact}"  routerLink="/contact">Contact</a>
+          <a class="nav-link" [ngClass]="{'active':contact}"  routerLink="/contact">ຕິດຕໍ່</a>
         </li>
         <li *ngIf="user_status == 0 || user_status == null" class="nav-item">
-          <a type="button" class="nav-link active" data-bs-toggle="modal" data-bs-target="#exampleModal1" data-bs-whatever="@mdo">Log in</a>
+          <a type="button" class="nav-link active" data-bs-toggle="modal" data-bs-target="#exampleModal1" data-bs-whatever="@mdo">ເຂົ້າສູ່ລະບົບ</a>
         </li>
         <li *ngIf="user_status == 0 || user_status == null" class="nav-item">
-          <a type="button" class="nav-link active" data-bs-toggle="modal" data-bs-target="#exampleModal2" data-bs-whatever="@mdo">Sign up</a>
+          <a type="button" class="nav-link active" data-bs-toggle="modal" data-bs-target="#exampleModal2" data-bs-whatever="@mdo">ລົງທະບຽນ</a>
         </li>
         <li *ngIf="user_status== 1" class="nav-item dropdown">
           <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             {{ this.user_info.data[0].user_name }}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" (click)="profile(this.user_info.data[0].user_name)">Visit Your profile</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" (click)="profile(this.user_info.data[0].user_name)">ໂປຣຟາຍຂອງຂ້ອຍ
+            </a></li>
+            <li><a class="dropdown-item" href="#">ການຈັດການ</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#" (click)="logout()">Log out</a></li>
+            <li><a class="dropdown-item" href="#" (click)="logout()">ອອກຈາກລະບົບ</a></li>
           </ul>
         </li>
       </ul>
@@ -58,27 +60,28 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Log in</h5>
+        <h5 class="modal-title" id="exampleModalLabel">ເຂົ້າສູ່ລະບົບ</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" #login_close aria-label="Close"></button>
       </div>
       <form [formGroup]="Login" (ngSubmit)="submit_login()" >
       <div class="modal-body">
           <div class="mb-3">
-            <label for="user_email" class="col-form-label">Email:</label>
+            <label for="user_email" class="col-form-label">ອີເມວ :</label>
             <input [ngClass]="{ 'is-invalid':  l.user_email.invalid && l.user_email.touched }" type="text" class="form-control" id="user_email" formControlName="user_email">
-            <small class="p-error text-danger" *ngIf=" l.user_email.hasError('required') &&l.user_email.invalid && l.user_email.touched">Email is require</small>
-            <small class="p-error text-danger" *ngIf=" l.user_email.hasError('email') &&l.user_email.invalid && l.user_email.touched">Email is invalid form</small>
+            <small class="p-error text-danger" *ngIf=" l.user_email.hasError('required') &&l.user_email.invalid && l.user_email.touched">ຕ້ອງໃສ່ອີເມວກ່ອນ</small>
+            <small class="p-error text-danger" *ngIf=" l.user_email.hasError('email') &&l.user_email.invalid && l.user_email.touched">ອີເມວນີ້ຍັງບໍ່ທັນໄດ້ລົງທະບຽນ</small>
           </div>
           <div class="mb-3">
-            <label for="user_password" class="col-form-label">Password:</label>
+            <label for="user_password" class="col-form-label">ລະຫັດ:</label>
             <input type="password" class="form-control" id="user_password" formControlName="user_password">
-            <small class="p-error text-danger" *ngIf="  l.user_password.hasError('required') &&l.user_password.invalid && l.user_password.touched">Password is require</small>
-            <small class="p-error text-danger" *ngIf="  l.user_password.hasError('minlength') &&l.user_password.invalid && l.user_password.touched">Password must be 8</small>
+            <small class="p-error text-danger" *ngIf="  l.user_password.hasError('required') &&l.user_password.invalid && l.user_password.touched">ຕ້ອງໃສ່ລະຫັດກ່ອນ
+            </small>
+            <small class="p-error text-danger" *ngIf="  l.user_password.hasError('minlength') &&l.user_password.invalid && l.user_password.touched">ລະຫັດຕ້ອງ 8 ຕົວຂື້ນໄປ</small>
           </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" [disabled]="Login.invalid">Log in</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ປິດ</button>
+        <button type="submit" class="btn btn-primary" [disabled]="Login.invalid">ເຂົ້າສູ່ລະບົບ</button>
       </div>
     </form>
     </div>
@@ -90,7 +93,8 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Sign up</h5>
+        <h5 class="modal-title" id="exampleModalLabel">ລົງທະບຽນ
+        </h5>
         <button type="button" class="btn-close" #closebutton data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -99,109 +103,110 @@
           <div class="row">
             <div class="form-floating col mb-3">
               <input [ngClass]="{ 'is-invalid':  f.user_name.invalid && f.user_name.touched }" type="text" class="form-control" id="user_name" placeholder="John" name="user_name" formControlName="user_name">
-              <label for="user_name">&nbsp; Name</label>
-              <small class="p-error text-danger" *ngIf="  f.user_name.hasError('required')&&f.user_name.invalid && f.user_name.touched">Name is require</small>
+              <label for="user_name">&nbsp; ຊື່</label>
+              <small class="p-error text-danger" *ngIf="  f.user_name.hasError('required')&&f.user_name.invalid && f.user_name.touched">ຕ້ອງໃສ່ຊື່ກ່ອນ</small>
             </div>
 
             <div class="form-floating col mb-3">
               <input [ngClass]="{'is-invalid':  f.user_surname.invalid && f.user_surname.touched }" type="text" class="form-control" id="user_surname" placeholder="Smith" formControlName="user_surname">
-              <label for="user_surname">&nbsp; Surname</label>
-              <small class="p-error text-danger" *ngIf=" f.user_surname.hasError('required') &&f.user_surname.invalid && f.user_surname.touched">Surname is require</small>
+              <label for="user_surname">&nbsp; ນາມສະກຸນ</label>
+              <small class="p-error text-danger" *ngIf=" f.user_surname.hasError('required') &&f.user_surname.invalid && f.user_surname.touched">ຕ້ອງໃສ່ນາມສະກຸນກ່ອນ</small>
             </div>
           </div>
 
           <div class="row">
             <div class=" form-floating col mb-3">
               <input [ngClass]="{ 'is-invalid':  f.user_email.invalid && f.user_email.touched }" type="email" name="user_email" id="user_email" class="form-control" placeholder="name@example.com" formControlName="user_email">
-              <label for="user_email">&nbsp; Email</label>
-              <small class="p-error text-danger" *ngIf=" f.user_email.hasError('required') &&f.user_email.invalid && f.user_email.touched">Email is require</small>
-              <small class="p-error text-danger" *ngIf=" f.user_email.hasError('email') &&f.user_email.invalid && f.user_email.touched">Email is invalid form</small>
+              <label for="user_email">&nbsp; ອີເມວ</label>
+              <small class="p-error text-danger" *ngIf=" f.user_email.hasError('required') &&f.user_email.invalid && f.user_email.touched">ຕ້ອງໃສ່ອີເມວກ່ອນ
+              </small>
+              <small class="p-error text-danger" *ngIf=" f.user_email.hasError('email') &&f.user_email.invalid && f.user_email.touched">ອີເມວນີ້ໃຊ່້ບໍ່ໄດ້</small>
             </div>
           </div>
           <div class="row">
             <div class="form-floating col mb-3">
               <input [ngClass]="{ 'is-invalid':  f.user_password.invalid && f.user_password.touched }" type="password" name="user_password" id="user_password" class="form-control" placeholder="***" formControlName="user_password">
-              <label for="user_password">&nbsp; Password</label>
-              <small class="p-error text-danger" *ngIf="  f.user_password.hasError('required') &&f.user_password.invalid && f.user_password.touched">Password is require</small>
-              <small class="p-error text-danger" *ngIf="  f.user_password.hasError('minlength') &&f.user_password.invalid && f.user_password.touched">Password must be 8</small>
+              <label for="user_password">&nbsp; ລະຫັດ</label>
+              <small class="p-error text-danger" *ngIf="  f.user_password.hasError('required') &&f.user_password.invalid && f.user_password.touched">ຕ້ອງໃສ່ລະຫັດກ່ອນ</small>
+              <small class="p-error text-danger" *ngIf="  f.user_password.hasError('minlength') &&f.user_password.invalid && f.user_password.touched">ລະຫັດຕ້ອງ 8 ຕົວຂື້ນໄປ</small>
             </div>
             <div class="form-floating col mb-3">
               <input [ngClass]="{ 'is-invalid':  f.confirm_password.invalid && f.confirm_password.touched }" type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="***" formControlName="confirm_password">
-              <label for="confirm_password">&nbsp; Confirm password</label>
-              <small class="p-error text-danger" *ngIf="  f.confirm_password.hasError('required') &&f.confirm_password.invalid && f.confirm_password.touched">Consfirm password is require</small>
-              <small class="p-error text-danger" *ngIf=" f.confirm_password.hasError('MustMatch') &&f.confirm_password.invalid && f.confirm_password.touched">Confirm password didn't Match</small>
+              <label for="confirm_password">&nbsp; ຢືນຢັນລະຫັດ</label>
+              <small class="p-error text-danger" *ngIf="  f.confirm_password.hasError('required') &&f.confirm_password.invalid && f.confirm_password.touched">ຢືນຢັນກ່ອນ</small>
+              <small class="p-error text-danger" *ngIf=" f.confirm_password.hasError('MustMatch') &&f.confirm_password.invalid && f.confirm_password.touched">ລະຫັດບໍ່ຕົງກັນ</small>
             </div>
           </div>
           <div class="row">
             <div class="form-floating col mb-3">
               <select class="form-select" id="floatingSelect" [ngClass]="{ 'is-invalid':  f.user_gender.invalid && f.user_gender.touched }" [(ngModel)]="genderList" formControlName="user_gender">
-                <option disable seleted hidden value="">Select gender</option>
-                <option value="1">Male</option>
-                <option value="2">Female</option>
-                <option value="3">Others</option>
+                <option disable seleted hidden value="">ເລືອກເພດ</option>
+                <option value="1">ຊາຍ</option>
+                <option value="2">ຍິງ</option>
+                <option value="3">ອື່ນໆ</option>
               </select>
-              <label for="floatingSelect">&nbsp; Gender</label>
-              <small class="p-error text-danger" *ngIf="  f.user_gender.hasError('required') &&f.user_gender.invalid && f.user_gender.touched">Gender is require</small>
+              <label for="floatingSelect">&nbsp; ເພດ</label>
+              <small class="p-error text-danger" *ngIf="  f.user_gender.hasError('required') &&f.user_gender.invalid && f.user_gender.touched">ຕ້ອງເລືອກເພດກ່ອນ</small>
             </div>
             <div class="form-floating col mb-3">
               <input [ngClass]="{ 'is-invalid':  f.user_dob.invalid && f.user_dob.touched }" type="date" name="user_dob" id="user_dob" class="form-control" formControlName="user_dob">
-              <label for="user_dob">&nbsp; Date of Birth</label>
-              <small class="p-error text-danger" *ngIf="  f.user_dob.hasError('required') &&f.user_dob.invalid && f.user_dob.touched">Date of Birth is require</small>
+              <label for="user_dob">&nbsp; ວັນເດືອນປີເກີດ</label>
+              <small class="p-error text-danger" *ngIf="  f.user_dob.hasError('required') &&f.user_dob.invalid && f.user_dob.touched">ຕ້ອງໃສ່ວັນເດືອນປີເກີດກ່ອນ</small>
             </div>
           </div>
 
           <div class="row">
             <div class="form-floating col mb-3">
               <select class="form-select" id="user_province" [ngClass]="{ 'is-invalid':  f.user_province.invalid && f.user_province.touched }" ngModel formControlName="user_province" (change)="onSelectprovince($event)">
-                <option disable seleted hidden value="">Select Province</option>
+                <option disable seleted hidden value="">ເລືອກແຂວງ</option>
                 <option *ngFor="let item of provinceList" value="{{ item.id_province }}">{{ item.name_lao }}</option>
               </select>
-              <label for="user_province">&nbsp; Province</label>
-              <small class="p-error text-danger" *ngIf="  f.user_province.hasError('required') &&f.user_province.invalid && f.user_province.touched">Province is require</small>
+              <label for="user_province">&nbsp; ແຂວງ</label>
+              <small class="p-error text-danger" *ngIf="  f.user_province.hasError('required') &&f.user_province.invalid && f.user_province.touched">ຕ້ອງເລືອກແຂວງກ່ອນ</small>
             </div>
             <div class="form-floating col mb-3">
               <select class="form-select" id="user_district" [ngClass]="{ 'is-invalid':  f.user_district.invalid && f.user_district.touched }" [(ngModel)]="user_district" formControlName="user_district"  (change)="onSelectdistrict($event)">
-                <option disable seleted hidden value="">Select District</option>
+                <option disable seleted hidden value="">ເລືອກເມືອງ</option>
                 <option *ngFor="let item of district_data" value="{{ item.id_district }}">{{ item.name_lao }}</option>
               </select>
-              <label for="user_district">&nbsp; District</label>
-              <small class="p-error text-danger" *ngIf="  f.user_district.hasError('required') &&f.user_district.invalid && f.user_district.touched">District is require</small>
+              <label for="user_district">&nbsp; ເມືອງ</label>
+              <small class="p-error text-danger" *ngIf="  f.user_district.hasError('required') &&f.user_district.invalid && f.user_district.touched">ຕ້ອງເລືອກເມືອງກ່ອນ</small>
             </div>
           </div>
 
           <div class="row">
             <div class="form-floating col mb-3">
               <select class="form-select" id="user_village" [ngClass]="{ 'is-invalid':  f.user_village.invalid && f.user_village.touched }" [(ngModel)]="user_village" formControlName="user_village" >
-                <option disable seleted hidden value="">Select Village</option>
+                <option disable seleted hidden value="">ເລືອກບ້ານ</option>
                 <option *ngFor="let item of village_data" value="{{ item.id_village }}">{{ item.name_lao }}</option>
 
               </select>
-              <label for="user_village">&nbsp; Village</label>
-              <small class="p-error text-danger" *ngIf="  f.user_village.hasError('required') &&f.user_village.invalid && f.user_village.touched">Village is require</small>
+              <label for="user_village">&nbsp; ບ້ານ</label>
+              <small class="p-error text-danger" *ngIf="  f.user_village.hasError('required') &&f.user_village.invalid && f.user_village.touched">ຕ້ອງເລືອກບ້ານກ່ອນ</small>
             </div>
             <div class=" col mb-3">
-              <label for="floatingSelect">&nbsp; Image</label>
+              <label for="floatingSelect">&nbsp; ຮູບ</label>
               <input [ngClass]="{'is-invalid':  f.image.invalid && f.image.touched }" type="file" class="form-control form-control-sm" id="Image" placeholder="Smith" formControlName="image" (change)="onFIleSelect($event , 'image')">
-              <small class="p-error text-danger" *ngIf=" f.image.hasError('required') &&f.image.invalid && f.image.touched">Image is require</small>
+              <small class="p-error text-danger" *ngIf=" f.image.hasError('required') &&f.image.invalid && f.image.touched">ຕ້ອງໃສ່ຮູບກ່ອນ</small>
             </div>
           </div>
           <div class="row">
             <div class="form-floating col mb-3">
               <input [ngClass]="{ 'is-invalid':  f.user_workplace.invalid && f.user_workplace.touched }" type="text" class="form-control" id="user_workplace" placeholder="Your Company" name="user_workplace" formControlName="user_workplace">
-              <label for="user_workplace">&nbsp; Workplace</label>
-              <small class="p-error text-danger" *ngIf="  f.user_workplace.hasError('required')&&f.user_workplace.invalid && f.user_workplace.touched">WorkPlace is require</small>
+              <label for="user_workplace">&nbsp; ສະຖານທີ່ເຮັດວຽກ</label>
+              <small class="p-error text-danger" *ngIf="  f.user_workplace.hasError('required')&&f.user_workplace.invalid && f.user_workplace.touched">ຕ້ອງໃສ່ສະຖານທີ່ເຮັດວຽກກ່ອນ</small>
             </div>
 
             <div class="form-floating col mb-3">
               <input [ngClass]="{'is-invalid':  f.user_phoneNumber.invalid && f.user_phoneNumber.touched }" type="text" class="form-control" id="user_phoneNumber" placeholder="Phone Number 20540XXXXXX" formControlName="user_phoneNumber">
-              <label for="user_phoneNumber">&nbsp; Phone Number</label>
-              <small class="p-error text-danger" *ngIf=" f.user_phoneNumber.hasError('required') &&f.user_phoneNumber.invalid && f.user_phoneNumber.touched">Phone Number is require</small>
-              <small class="p-error text-danger" *ngIf=" f.user_phoneNumber.hasError('pattern') &&f.user_phoneNumber.invalid && f.user_phoneNumber.touched">Phonenumber is invalid format</small>
+              <label for="user_phoneNumber">&nbsp; ເບີໂທ</label>
+              <small class="p-error text-danger" *ngIf=" f.user_phoneNumber.hasError('required') &&f.user_phoneNumber.invalid && f.user_phoneNumber.touched">ຕ້ອງໃສ່ເບີໂທກ່ອນ</small>
+              <small class="p-error text-danger" *ngIf=" f.user_phoneNumber.hasError('pattern') &&f.user_phoneNumber.invalid && f.user_phoneNumber.touched">ເບີບໍ່ຖືກຕ້ອງt</small>
             </div>
           </div>
           <div class="form-label">
-            <small class="p-error text-danger" *ngIf="email_exist">this email is already exist</small>
-            <button type="submit" class="btn btn-primary form-control" [disabled]="Registration.invalid">Sign up</button>
+            <small class="p-error text-danger" *ngIf="email_exist">ອີເມວນີ້ມີຜູ້ໃຊ້ແລ້ວ</small>
+            <button type="submit" class="btn btn-primary form-control" [disabled]="Registration.invalid">ລົງທະບຽນ</button>
           </div>
 
         </form>

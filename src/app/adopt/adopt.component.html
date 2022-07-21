@@ -82,18 +82,31 @@
 
 <div class="container text-center" style="margin-top: 10rem">
   <div class="row">
-    <div class="col-md-4 g-3" *ngFor="let item of dog_data">
-      <img src="{{ item.dog_img }}" class="dog-pic" alt="" />
+    <div class="col-md-3 g-4" *ngFor="let item of dog_data">
+      <div class="card text-sm-start text-black" style="width: 18rem;">
+        <img src="{{ item.dog_img }}" class="card-img-top" alt="">
+        <div class="card-body">
+          <h5 class="card-title">{{ item.dog_name }}</h5>
+          <p class="card-text">{{ item.dog_species }}</p>
+        </div>
+        <div class="card-body">
+          <a class="btn btn-success"
+          type="button"
+          data-bs-toggle="modal"
+          attr.data-bs-target="#dog1{{ item.dog_id }}">more info</a>
+        </div>
+      </div>
+      <!-- <img src="{{ item.dog_img }}" class="dog-pic" alt="" />
       <p class="h3 text-primary">{{ item.dog_name }}</p>
-      <p class="">{{ item.dog_species }}</p>
-      <button
+      <p class="">{{ item.dog_species }}</p> -->
+      <!-- <button
         class="btn btn-success"
         type="button"
         data-bs-toggle="modal"
         attr.data-bs-target="#dog1{{ item.dog_id }}"
       >
         more info
-      </button>
+      </button> -->
 
       <!-- Modal -->
       <div

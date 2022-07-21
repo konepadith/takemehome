@@ -6,17 +6,17 @@
 <div class="bg-dark d-flex align-items-center justify-content-center border-banner">
   <div class="container-fluid banner-img"></div>
   <div class="h1 text-white fw-bold" style="opacity: 1; position: absolute">
-    Contact Us
+    ຕິດຕໍ່ພວກເຮົາ
   </div>
 </div>
 <div class="container">
 
   <div class=" mt-5 text-center">
     <div class="col-sm fs-1 fw-bolder">
-      SEND US A MESSAGE!
+      ສົ່ງຂໍ້ຄວາມຫາພວກເຮົາ
     </div>
     <div class="col-sm fs-5 text-secondary">
-      Stay connected to TakeMeHome
+      ອອນລາບໄວ້ເພື່ອຈະຕິດຕໍ່ກັບພວກເຮົາ
     </div>
   </div>
 </div>
@@ -24,42 +24,42 @@
   <form action="" [formGroup]="formmailing" (ngSubmit)="submit_mailing()">
     <div class="row ">
       <div class="col-sm-5 mb-3">
-        <label for="">Name</label>
+        <label for="">ຊື່</label>
         <input class="form-control"  [ngClass]="{ 'is-invalid': f.mail_name.hasError('required') &&f.mail_name.invalid && f.mail_name.touched }" type="text" name="name" id="" placeholder="Name" formControlName="mail_name">
-        <small class="p-error text-danger"  *ngIf=" f.mail_name.hasError('required') &&f.mail_name.invalid && f.mail_name.touched">name is require</small>
+        <small class="p-error text-danger"  *ngIf=" f.mail_name.hasError('required') &&f.mail_name.invalid && f.mail_name.touched">ຕ້ອງໃສ່ຊື່ກ່ອນ</small>
       </div>
       <div class="col-sm-5 mb-3">
-        <label for="">Lastname</label>
+        <label for="">ນາມສະກຸນ</label>
         <input class="form-control" type="text" [ngClass]="{'is-invalid': f.mail_surname.hasError('required') &&f.mail_surname.invalid && f.mail_surname.touched}" name="Lastname" id="" placeholder="Lastname" formControlName="mail_surname">
-        <small class="p-error text-danger" *ngIf=" f.mail_surname.hasError('required') &&f.mail_surname.invalid && f.mail_surname.touched">Lastname is require</small>
+        <small class="p-error text-danger" *ngIf=" f.mail_surname.hasError('required') &&f.mail_surname.invalid && f.mail_surname.touched">ຕ້ອງໃສ່ນາມສະກຸນກ່ອນ</small>
       </div>
     </div>
     <div class="row ">
       <div class="col-sm-5 mb-3">
-        <label for="">Email</label>
+        <label for="">ອີເມວ</label>
         <input class="form-control" type="email" [ngClass]="{'is-invalid': f.mail_email.errors &&f.mail_email.invalid && f.mail_email.touched}" name="mail_email" id="" placeholder="John.doe@example.com" formControlName="mail_email">
-        <small class="p-error text-danger" *ngIf=" f.mail_email.hasError('required') &&f.mail_email.invalid && f.mail_email.touched">Email is require</small>
-        <small class="p-error text-danger" *ngIf=" f.mail_email.hasError('email') &&f.mail_email.invalid && f.mail_email.touched">Email is invalid form</small>
+        <small class="p-error text-danger" *ngIf=" f.mail_email.hasError('required') &&f.mail_email.invalid && f.mail_email.touched">ຕ້ອງໃສ່ອີເມວກ່ອນ</small>
+        <small class="p-error text-danger" *ngIf=" f.mail_email.hasError('email') &&f.mail_email.invalid && f.mail_email.touched">ອີເມວນີ້ໃຊ້ບໍ່ໄດ້</small>
       </div>
       <div class="col-sm-5 mb-3">
-        <label for="">Phone Number</label>
+        <label for="">ເບີໂທ</label>
         <input class="form-control" type="text" [ngClass]="{'is-invalid':f.mail_phone.errors &&f.mail_phone.invalid && f.mail_phone.touche }" name="mail_phone" id="" placeholder="+85620540XXX48" formControlName="mail_phone">
-        <small class="p-error text-danger" *ngIf=" f.mail_phone.hasError('required') &&f.mail_phone.invalid && f.mail_phone.touched">Phone Number is require</small>
-        <small class="p-error text-danger" *ngIf=" f.mail_phone.hasError('pattern') &&f.mail_phone.invalid && f.mail_phone.touched">Phonenumber is invalid format</small>
+        <small class="p-error text-danger" *ngIf=" f.mail_phone.hasError('required') &&f.mail_phone.invalid && f.mail_phone.touched">ຕ້ອງໃສ່ເບີໂທກ່ອນ</small>
+        <small class="p-error text-danger" *ngIf=" f.mail_phone.hasError('pattern') &&f.mail_phone.invalid && f.mail_phone.touched">ເບີໂທນີ້ໃຊ້ບໍ່ໄດ້</small>
       </div>
     </div>
     <div class="row ">
       <div class="col-sm-5 mb-3">
-        <label class="form-label" for="">Best Time to Call</label>
+        <label class="form-label" for="">ຊ່ວງເວລາ</label>
         <select class="form-select" name="mail_call" [ngClass]="{'is-invalid': f.mail_call.hasError('required') &&f.mail_call.invalid && f.mail_call.touched}" ngModel="Anytime" id="" formControlName="mail_call" >
-          <option value="Anytime" #Anytime>Anytime</option>
+          <option value="Anytime" #Anytime>ຕະຫຼອດເວລາ</option>
           <option value="AM">AM</option>
           <option value="PM">PM</option>
         </select>
-        <small class="p-error text-danger" *ngIf=" f.mail_call.hasError('required') &&f.mail_call.invalid && f.mail_call.touched">Time call is require</small>
+        <small class="p-error text-danger" *ngIf=" f.mail_call.hasError('required') &&f.mail_call.invalid && f.mail_call.touched">ຕ້ອງກຳນົດເວລາກ່ອນ</small>
       </div>
       <div class="col-sm-5 mb-3">
-        <label class="form-label" for="" >Topic of your Message</label>
+        <label class="form-label" for="" >ຫົວຂໍ້ຂອງຂໍ້ຄວາມ</label>
         <select class="form-select" ngModel="Adoption" [ngClass]="{'is-invalid': f.mail_topic.hasError('required') &&f.mail_topic.invalid && f.mail_topic.touched}" name="mail_Topic" id=""formControlName="mail_topic" >
           <option value="Adoption" #Adoption>Adoption</option>
           <option value="Donation">Donation</option>
