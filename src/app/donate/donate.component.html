@@ -7,7 +7,7 @@
     Donate for Us
   </div>
 </div>
-<div class="container mt-5">
+<!-- <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-sm-5">
       <p class="fs-3 fw-bold">
@@ -79,6 +79,9 @@
       </div>
 
     </form>
+    <div>
+
+    </div>
 
     <div class="row justify-content-center mt-2 mb-5">
       <div class="col-sm-3">
@@ -87,10 +90,42 @@
       </div>
     </div>
 
+</div> -->
+
+
+
+<div class="container-fluid bg_donate">
+  <div class="container p-5">
+
+    <div class="donate_card mx-auto text-center p-3">
+      <p class=" text-black h4">ບໍລິຈາກໃຫ້ນ້ອງໝາ</p>
+      <hr>
+      <div class="row">
+        <div class="col"><img class="donate_img" src="../../assets/img/pexels-dorte-179221.jpg" alt=""></div>
+      </div>
+      <p class="donate_text mt-3 mb-5 text-black">ເຈົ້າຕ້ອງການບໍລິການເທົ້າໃດ້ ?</p>
+      <form>
+      <div class="row">
+        <div class="col"><button id="credit-card" class="do_val" (click)="handleclick($event,20)">10 Baht</button></div>
+        <div class="col"><button id="credit-card" class="do_val" (click)="handleclick($event,30)">20 Baht</button></div>
+        <div class="col"><button id="credit-card" class="do_val" (click)="handleclick($event,50)">30 Baht</button></div>
+      </div>
+      <div class="row mt-3">
+        <div class="col"><button id="credit-card" class="do_val" (click)="handleclick($event,100)">50 Baht</button></div>
+        <div class="col"><button id="credit-card" class="do_val" (click)="handleclick($event,500)">500 Baht</button></div>
+        <div class="col"><button id="credit-card" class="do_val" (click)="handleclick($event,1000)">900 Baht</button></div>
+      </div>
+    </form>
+      <input [(ngModel)]="customedonate" #ctrl="ngModel" type="number" class="form-control text-center mt-5"placeholder="ຈຳນວນອື່ນ">
+
+    </div>
+    <form>
+    <div class="mx-auto text-center">
+      <button class="do_cus mt-3 " (click)="handleclick($event,customedonate)">ບໍລິຈາກ</button>
+    </div>
+  </form>
+
 </div>
-
-
-
-
+</div>
 
 <app-footer></app-footer>

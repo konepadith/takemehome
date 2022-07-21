@@ -35,3 +35,44 @@
     margin-top: 2rem;
   }
 }
+.donate_wrap{
+  margin: auto;
+}
+.donate_card{
+  width: 400px;
+  height: 600px;
+  background-color: rgb(255, 170, 58);
+  border-radius: 15px;
+}
+.donate_img{
+  width: 150px;
+  height: 200px;
+  object-fit: cover;
+}
+.donate_text{
+  font-size: 18px;
+
+}
+.do_val{
+  width: 80px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+  outline: none;
+  border: none;
+  box-shadow: 2px 2px 5px;
+  font-weight: 600;
+}
+.do_cus{
+  width: 300px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: rgb(255, 170, 58);
+  outline: none;
+  border: none;
+}
+.bg_donate{
+  background-image: url(../../assets/img/seamless-pattern-cute-dog-puppy-symbol-toy-paw-footstep-cartoon-funny-happy-dog-concept-with-simple-shape-style-illustration-background-wallpaper-textile-fabric_253081-200.webp);
+  background-size: 500px;
+  background-repeat: repeat;
+}
