@@ -21,3 +21,16 @@
     width: 100% ;
   }
 }
+.container{
+  width: 1500px;
+}
+.profile{
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  object-fit: cover;
+}
+.card_profile{
+  height: 400px;
+  padding-top: 2rem;
+}

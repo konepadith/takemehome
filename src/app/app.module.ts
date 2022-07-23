@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
 import { AdoptComponent } from './adopt/adopt.component';
 import { DonateComponent } from './donate/donate.component';
 import { NewseventComponent } from './newsevent/newsevent.component';
@@ -25,7 +24,6 @@ import { CachingInterceptor } from './interceptor/caching.interceptor';
   declarations: [
     AppComponent,
     HomeComponent,
-    AboutComponent,
     AdoptComponent,
     DonateComponent,
     NewseventComponent,

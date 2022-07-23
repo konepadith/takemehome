@@ -9,6 +9,70 @@
     ຕິດຕໍ່ພວກເຮົາ
   </div>
 </div>
+
+<div class="container text-center py-5">
+  <div class="row justify-content-md-center">
+    <div class="col-3 mx-5 border border-1 bg-dark" style="border-radius: 15px;">
+      <div class="card_profile">
+        <img src="../../assets/img/pexels-everson-mayer-1480915.jpg" class="profile" alt="">
+      <p class="h3 text-white pt-5">KONEPADITH</p>
+      </div>
+    </div>
+    <div class="col-3 border border-1 bg-dark"  style="border-radius: 15px;">
+      <div class="card_profile">
+        <img src="../../assets/img/pexels-everson-mayer-1480915.jpg" class="profile" alt="">
+      <p class="h3 text-white pt-5">HOUMPHUN</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container text-center">
+  <div class="row ">
+    <div class="col">
+      <h3>ຕິດຕໍ່ພວກເຮົາ</h3>
+      <ul class="list-unstyled list-inline">
+        <li class="list-inline-item">
+          <a href="" class="btn-floating btn-sm " style="font-size: 23px;"><i class="fab fa-facebook"></i></a>
+        </li>
+        <li class="list-inline-item">
+          <a href="" class="btn-floating btn-sm  text-info" style="font-size: 23px;"><i class="fab fa-twitter"></i></a>
+        </li>
+        <li class="list-inline-item">
+          <a href="" class="btn-floating btn-sm text-success" style="font-size: 23px;"><i class="fab fa-google-plus"></i></a>
+        </li>
+        <li class="list-inline-item">
+          <a href="" class="btn-floating btn-sm text-warning" style="font-size: 23px;"><i class="fab fa-linkedin-in"></i></a>
+        </li>
+        <li class="list-inline-item">
+          <a href="" class="btn-floating btn-sm text-danger" style="font-size: 23px;"><i class="fab fa-youtube"></i></a>
+        </li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>ຕິດຕໍ່ສ່ວນຕົວ</h3>
+        <div class="text-start" style="margin-left: 6rem ;">
+          <p>
+            <i class="fas fa-home mr-3"></i> New York, NY 2333, US
+          </p>
+          <p>
+            <i class="fas fa-envelope mr-3"></i> theprovider98@gmail.com</p>
+          <p>
+            <i class="fas fa-phone mr-3"></i> +856 20 540 48 008</p>
+          <p><i class="fas fa-print mr-3"></i> +856 20 228 81 314</p>
+
+        </div>
+    </div>
+    <div class="col">
+      <h3>ອີເມວຫ້ອງການ</h3>
+      <p>
+        <i class="fas fa-envelope mr-3"></i> takeme.home.lao@gmail.com</p>
+      <p>
+    </div>
+  </div>
+</div>
+
+
+
 <div class="container">
 
   <div class=" mt-5 text-center">
@@ -22,7 +86,7 @@
 </div>
 <div class="container mt-5">
   <form action="" [formGroup]="formmailing" (ngSubmit)="submit_mailing()">
-    <div class="row ">
+    <div class="row justify-content-md-center">
       <div class="col-sm-5 mb-3">
         <label for="">ຊື່</label>
         <input class="form-control"  [ngClass]="{ 'is-invalid': f.mail_name.hasError('required') &&f.mail_name.invalid && f.mail_name.touched }" type="text" name="name" id="" placeholder="Name" formControlName="mail_name">
@@ -34,7 +98,7 @@
         <small class="p-error text-danger" *ngIf=" f.mail_surname.hasError('required') &&f.mail_surname.invalid && f.mail_surname.touched">ຕ້ອງໃສ່ນາມສະກຸນກ່ອນ</small>
       </div>
     </div>
-    <div class="row ">
+    <div class="row justify-content-md-center">
       <div class="col-sm-5 mb-3">
         <label for="">ອີເມວ</label>
         <input class="form-control" type="email" [ngClass]="{'is-invalid': f.mail_email.errors &&f.mail_email.invalid && f.mail_email.touched}" name="mail_email" id="" placeholder="John.doe@example.com" formControlName="mail_email">
@@ -48,7 +112,7 @@
         <small class="p-error text-danger" *ngIf=" f.mail_phone.hasError('pattern') &&f.mail_phone.invalid && f.mail_phone.touched">ເບີໂທນີ້ໃຊ້ບໍ່ໄດ້</small>
       </div>
     </div>
-    <div class="row ">
+    <div class="row justify-content-md-center">
       <div class="col-sm-5 mb-3">
         <label class="form-label" for="">ຊ່ວງເວລາ</label>
         <select class="form-select" name="mail_call" [ngClass]="{'is-invalid': f.mail_call.hasError('required') &&f.mail_call.invalid && f.mail_call.touched}" ngModel="Anytime" id="" formControlName="mail_call" >
@@ -71,14 +135,14 @@
         <small class="p-error text-danger" *ngIf=" f.mail_topic.hasError('required') &&f.mail_topic.invalid && f.mail_topic.touched">Topic is require</small>
       </div>
     </div>
-    <div class="row ">
+    <div class="row justify-content-md-center">
       <div class="col-sm-10 mb-3">
         <label class="form-label" for="">Message</label>
         <textarea class="form-control" name="mail_msg" [ngClass]="{'is-invalid': f.mail_msg.hasError('required') &&f.mail_msg.invalid && f.mail_msg.touched}" id="" cols="8" rows="8" placeholder="Type your message here..." formControlName="mail_msg"></textarea>
         <small class="p-error text-danger" *ngIf=" f.mail_msg.hasError('required') &&f.mail_msg.invalid && f.mail_msg.touched">Topic is require</small>
       </div>
     </div>
-    <div class="row">
+    <div class="row justify-content-md-center">
       <div class="col-sm-3 mb-3" >
         <ngx-recaptcha2 #captchaElem
       [siteKey]="siteKey"
@@ -86,7 +150,7 @@
     </ngx-recaptcha2>
       </div>
     </div>
-    <div class="row">
+    <div class="row justify-content-md-center">
       <div class="col-sm-4 mb-3">
         <button class="btn btn-primary" type="submit" [disabled]="formmailing.invalid">Send</button>
       </div>

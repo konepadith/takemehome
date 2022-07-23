@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AboutComponent } from './about/about.component';
 import { AdoptComponent } from './adopt/adopt.component';
 import { AdoptdetailComponent } from './adopt/adoptdetail/adoptdetail.component';
 import { ContactComponent } from './contact/contact.component';
@@ -12,7 +11,6 @@ import { ProfileComponent } from './profile/profile.component';
 const routes: Routes = [
   {path: '',   redirectTo: '/home', pathMatch: 'full' },
   {path:'home',component:HomeComponent},
-  {path:'about',component:AboutComponent},
   {path:'adopt',component:AdoptComponent},
   {path:'donate',component:DonateComponent},
   {path:'news_event',component:NewseventComponent},
@@ -27,4 +25,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 
-export const routingComponents= [HomeComponent,AboutComponent,AdoptComponent,DonateComponent,NewseventComponent,ContactComponent,AdoptdetailComponent,ProfileComponent]
+export const routingComponents= [HomeComponent,AdoptComponent,DonateComponent,NewseventComponent,ContactComponent,AdoptdetailComponent,ProfileComponent]
