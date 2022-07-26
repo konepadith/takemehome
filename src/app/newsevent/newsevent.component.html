@@ -2,30 +2,29 @@
 <div class="bg-dark d-flex align-items-center justify-content-center border-banner">
   <div class="container-fluid banner-img"></div>
   <div class="h1 text-white fw-bold" style="opacity: 1; position: absolute">
-    NEWS & EVENTS
+ກິດຈະກຳ ແລະ ຂ່າວສານ
   </div>
 </div>
 <div class="container">
   <div class=" mt-5 text-center text-primary">
     <div class="col-sm fs-1 fw-bolder text-dark">
-      SPECIAL EVENTS
+      ຂ່າວພິເສດ
     </div>
     <div class="card text-sm-start text-black" style="width: 18rem;">
-      <img src="../../assets/img/pexels-helena-lopes-3714060.jpg" class="card-img-top" alt="">
+      <img src="../../assets/img/MPC_Dog_Vaccine_Main.jpg" class="card-img-top" alt="">
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <h5 class="card-title">ຄວາມສຳຄັນຂອງວັກຊິນ</h5>
+        <p class="card-text">ພາຍໃນກິດຈະກຳຈະມີການນຳສະເໜີວິທີການເບິງແຍງນ້ອງໝາຂອງທ່ານ ໃຫ້ຢູ່ນຳກັນໄປເລື່ອຍໆ</p>
       </div>
       <div class="card-body">
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
+        <a href="#" class="btn btn-secondary">Card link</a>
       </div>
     </div>
     <div class="col-sm mt-5 pt-5 pb-5 fw-bolder fs-1 text-primary border-top border-bottom border-danger text-dark">
-      ADOPTION EVENTS
+      ອຸປະກາລະໝາ
     </div>
     <div class="col-sm mt-5 fs-5 text-start text-secondary">
-      Straydog is conducting adoption/home visits again! We also welcome potential adopters to the shelter by appointment. Please contact us by email at straydogshelter@gmail.com or phone: (903) 479-3497. Let us know which dog you are interested in adopting! View our pups here.
+      ໝາຈະມີບ່ອນຢູ່ໃໝ່ທີ່ດີກວ່າເກົ່າ! ພວກເຮົາຍິນດີຮັບບໍລີຈາກ ແລະ ໃຫ້ທ່ານອຸປະກາລະ. ຕິດຕໍ່ພວກເຮົາທີ່ takeme.home.lao@gmail.com ຫຼື ເບີ: 020 9100 5514. ທ່ານສາມາດເບິ່ງ ແລະ ຕິດຕາມການອຸປະກາລະໝາໄດ້ແລ້ວ! ກົດໄປໜ້ານ້ອງໝາ.
     </div>
     <div *ngFor="let item of eventsList">
       <div class="col-sm mt-5 mb-5 bg-dark p-4 rounded-1">
@@ -39,7 +38,7 @@
             <p class="fs-2 text-white">{{item.event_topic}}</p>
             <p class="fs-4 text-secondary">{{item.event_start}} {{item.event_end}}</p>
             <p class="fs-4 text-secondary">{{item.event_place}}</p>
-            <a class="text-decoration-none text-danger text-start fw-bold text-uppercase" href="{{item.event_direction}}" target="_blank">get direction</a>
+            <a class="text-decoration-none text-danger text-start fw-bold text-uppercase" href="{{item.event_direction}}" target="_blank">ແຜ່ນທີ່</a>
           </div>
         </div>
       </div>
@@ -49,12 +48,13 @@
         <div class="row">
           <div class="col-3">
             <p class="fs-3 text-white fw-light text-uppercase"></p>
-            <p class="text-danger fs-1 fw-bold text-uppercase">No event</p>
+            <p class="text-danger fs-1 fw-bold text-uppercase">ບໍ່ມີກິດຈະກຳ</p>
             <p class="text-danger fs-1 fw-bold"></p>
           </div>
           <div class="col text-start">
-            <p class="fs-2 text-white">There aren't event now</p>
-            <p class="fs-4 text-secondary">We will comming soon</p>
+            <p class="fs-2 text-white">ກິດຈະກຳຍັງບໍ່ທັນໄດ້ຈັດ
+            </p>
+            <p class="fs-4 text-secondary">ກິດຈະກຳກຳລັງຈະເປີດຕົວໄວໆນີ້</p>
             <p class="fs-4 text-secondary"></p>
             <a class="text-decoration-none text-danger text-start fw-bold text-uppercase" href="" target="_blank"></a>
           </div>
