@@ -123,7 +123,7 @@ export class AdoptdetailComponent implements OnInit {
 
 
 
-test(){
-  console.log(this.formrequired.value)
-}
+// test(){
+//   console.log(this.formrequired.value)
+// }
 }
