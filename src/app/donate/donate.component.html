@@ -106,14 +106,14 @@
       <p class="donate_text mt-3 mb-5 text-black">ເຈົ້າຕ້ອງການບໍລິການເທົ້າໃດ້ ?</p>
       <form>
       <div class="row">
-        <div class="col"><button id="credit-card" class="do_val" (click)="handleclick($event,20)">10 THB</button></div>
-        <div class="col"><button id="credit-card" class="do_val" (click)="handleclick($event,30)">20 THB</button></div>
-        <div class="col"><button id="credit-card" class="do_val" (click)="handleclick($event,50)">30 THB</button></div>
+        <div class="col"><button id="credit-card" class="do_val" (click)="handleclick($event,20)">20 THB</button></div>
+        <div class="col"><button id="credit-card" class="do_val" (click)="handleclick($event,30)">30 THB</button></div>
+        <div class="col"><button id="credit-card" class="do_val" (click)="handleclick($event,50)">50 THB</button></div>
       </div>
       <div class="row mt-3">
-        <div class="col"><button id="credit-card" class="do_val" (click)="handleclick($event,100)">50 THB</button></div>
+        <div class="col"><button id="credit-card" class="do_val" (click)="handleclick($event,100)">100 THB</button></div>
         <div class="col"><button id="credit-card" class="do_val" (click)="handleclick($event,500)">500 THB</button></div>
-        <div class="col"><button id="credit-card" class="do_val" (click)="handleclick($event,1000)">900 THB</button></div>
+        <div class="col"><button id="credit-card" class="do_val" (click)="handleclick($event,900)">900 THB</button></div>
       </div>
     </form>
       <input [(ngModel)]="customedonate" #ctrl="ngModel" type="number" class="form-control text-center mt-5"placeholder="ຈຳນວນອື່ນ">

@@ -15,13 +15,15 @@ export class AdoptdetailComponent implements OnInit {
   id:any
   dog_list:any
   user_info:any
+  check_length:any
   siteKey="6Lf1ml8eAAAAAOajJs_dt2BdNfOhj-Xz2aj_ll27"
   constructor(private service : RestService , private fb:FormBuilder, private activatedRoute : ActivatedRoute, private spinner : NgxSpinnerService) { }
 
   ngOnInit(): void {
 
     this.service.data_dog_id(this.activatedRoute.snapshot.params['id']).subscribe(response=>{
-      console.log(response.data)
+      console.log(response.data.length)
+      this.check_length=response.data.length
       this.dog_list=response.data
     })
 
