@@ -42,6 +42,14 @@ export class RestService {
     const url=this.url+'/province'
     return this.http.get<any>(url)
   }
+  dog_count(){
+    const url=this.url+'/dog_count'
+    return this.http.get<any>(url)
+  }
+  adopt_count(){
+    const url=this.url+'/adopt_count'
+    return this.http.get<any>(url)
+  }
   data_dog_id(id:any){
     const url=this.url+'/data_dog_id?id='+id
     return this.http.get<any>(url)
